@@ -1,0 +1,1 @@
+- 如FilterRegistrationBean等，可以在bean存在时仍然注册，实例注入这个bean就好了，这个注册只是配置

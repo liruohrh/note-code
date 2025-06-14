@@ -1,0 +1,9 @@
+- 管理package，一个项目就是一个package（依赖叫crate）
+- `cargo new project_name`
+- profile：
+- 构建模式：默认debug，还有`-r,--release`
+- `cargo build` 构建当前package
+	- 输出`./target/debug/hello_world[.exe]`
+- `cargo run` 构建且运行
+- 可执行文件：默认target`src/main.rs`
+	- 添加target：可以添加`bin/xxx.rs`，--bin xxx指定构建xxx

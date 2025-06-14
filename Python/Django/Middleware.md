@@ -1,0 +1,9 @@
+- `django.core.handlers.wsgi.WSGIHandler#__call__`
+	- `django.core.handlers.wsgi.WSGIHandler#get_response`
+		- `self._middleware_chain` 
+			- 第一个middleware（就是按配置的顺序）
+			- middleware的参数get_response就是下一个middleware
+			- 最后一个就是`django.core.handlers.base.BaseHandler._get_response`
+				- 会捕获视图的异常，且process_exception_by_middleware，按顺序，仅含process_exception方法的才能捕获，否则直接raise
+					- 如果不在这里处理且返回一个Response，会被middleware的wrap输出一次日志（`django.request`）
+				- `def process_exception(request, exception): -> Response`

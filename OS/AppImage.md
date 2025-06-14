@@ -1,0 +1,3 @@
+- https://appimage.org/
+- https://docs.appimage.org/packaging-guide/manual.html
+	- 手动打二进制包

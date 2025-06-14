@@ -1,0 +1,11 @@
+- 操作标签页地址栏栈，url不支持跨域
+- `history.length`：栈元素长度
+- `history.state`：查看当前state对象
+- `history.pushState(state, null, "/")`
+	- 给history栈push一个state
+		- 且如果url是空，则是/
+	- 地址栏显示url，但是不会刷新，不会自动请求该url
+		- 如果此时刷新，则会请求/页面
+		- 且也仅在刷新后才会请求新页面
+- `history.replaceState(state, null, "/")`
+	- 同pushState，但是只是更新当前栈顶元素的state对象和url

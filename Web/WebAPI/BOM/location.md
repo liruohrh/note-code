@@ -1,0 +1,5 @@
+- href：当前URL
+- protocol、host、hostname、port、pathname、hash、search
+- `location.reload()`：刷新页面
+- `location.assign(url)`：跳转指定URL
+- `location.replace(url)`：跳转指定URL，但是会替换标签页地址栏栈顶元素

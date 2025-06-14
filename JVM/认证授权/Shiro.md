@@ -1,0 +1,12 @@
+- 步骤
+	- 实现AuthorizingRealm：获取认证成功后的用户信息、鉴权时的权限信息
+	- 实现AuthenticationToken：就是所谓的Principal
+	- 实现AuthenticationFilter：认证Filter，和Spring Security差不多，由一个Filter（AbstractShiroFilter）拦截请求，进行认证、鉴权（Shiro的鉴权可以配置路径，如果用注解则是AOP）
+# ShiroHttpServletRequest
+- 获取Subject ：`SecurityUtils.getSubject`
+	- 不是很好，可能直接从`ThreadContext.getSubject()`获取更好，但是要注意为空的情况（最好注入SecurityManager以创建Subject）
+	- 这个导致[SpringWeb异步请求的Dispatch问题](/JVM/Spring/Web/Async#异步Dispath导致的问题--Shiro)
+- Shiro对请求的Wrapper重写了
+	- Session（使用Shiro自己的Session）
+	- isUserInRole：优先从Subject获取，无再从Tomcat的Realm
+	- getUserPrincipal、getRemoteUser：因此建议实现`java.security.Principal`

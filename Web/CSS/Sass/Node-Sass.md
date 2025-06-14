@@ -1,0 +1,6 @@
+- 一定要保持合适的node版本
+- 坑逼的玩意需要下载python
+	- [参考](https://www.jianshu.com/p/e461e3e765f0)
+- 指定python路径方法
+	- `npm i --python=/path/to/bin/python`
+	- `npm config set python=/path/to/bin/python`

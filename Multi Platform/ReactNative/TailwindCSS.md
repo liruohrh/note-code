@@ -1,0 +1,2 @@
+- nativatewind
+- 不需要cn连接className

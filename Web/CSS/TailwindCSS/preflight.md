@@ -1,0 +1,4 @@
+- https://www.tailwindcss.cn/docs/preflight
+- 作用：让TailwindCSS在不同客户端中保持一致的样式，即为元素重新设置默认样式
+- 使用方法：在使用`@tailwind base`包含TailwindCSS基础样式时就已经包含进去了
+- 文件：`node_modules/tailwindcss/lib/css/preflight.css`

@@ -1,0 +1,3 @@
+- 一种在如TCP协议之上的二进制协议
+- https://rsocket.io/
+- [Spring Boot中使用RSocket](https://juejin.cn/post/6844903860192935949)

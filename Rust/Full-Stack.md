@@ -1,0 +1,6 @@
+- Server：https://rocket.rs/
+- DB：https://docs.rs/surrealdb/latest/surrealdb/
+	- 一个新数据库：https://surrealdb.com/docs/surrealdb/introduction/start
+- Web：https://yew.rust-lang.net.cn/docs/tutorial
+	- React-Like
+- Desktop：https://tauri.app/
