@@ -1,0 +1,6 @@
+icons/
+workspace.json
+
+plugins/**/*.*
+!plugins/**/data.json
+themes/

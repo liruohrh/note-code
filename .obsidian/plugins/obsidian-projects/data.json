@@ -1,0 +1,119 @@
+{
+  "version": 2,
+  "projects": [
+    {
+      "fieldConfig": {},
+      "defaultName": "",
+      "templates": [],
+      "excludedNotes": [],
+      "isDefault": false,
+      "dataSource": {
+        "kind": "folder",
+        "config": {
+          "path": "Projects - Demo Project",
+          "recursive": false
+        }
+      },
+      "newNotesFolder": "",
+      "views": [
+        {
+          "config": {
+            "fieldConfig": {
+              "name": {
+                "width": 360
+              },
+              "path": {
+                "hide": true
+              }
+            }
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "name": "Table",
+          "id": "00a3bbfb-c050-437f-8d0d-7523a4ddabab",
+          "type": "table"
+        },
+        {
+          "config": {
+            "groupByField": "status",
+            "orderSyncField": "weight"
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "name": "Board",
+          "id": "4cbc652c-d623-4d8c-a167-f29b99974d46",
+          "type": "board"
+        },
+        {
+          "config": {
+            "interval": "month",
+            "dateField": "due",
+            "checkField": "published"
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "name": "Calendar",
+          "id": "b8deb9f4-e146-4bd3-a9ed-c40b2cdfd57e",
+          "type": "calendar"
+        },
+        {
+          "config": {
+            "coverField": "image"
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "name": "Gallery",
+          "id": "1df54e76-d7d8-4e5d-b5af-40389039062a",
+          "type": "gallery"
+        }
+      ],
+      "name": "Demo project",
+      "id": "2efa6b98-5a23-4a87-8aff-52e0bf5c71d8",
+      "path": "Projects - Demo Project"
+    }
+  ],
+  "archives": [],
+  "preferences": {
+    "projectSizeLimit": 1000,
+    "frontmatter": {
+      "quoteStrings": "PLAIN"
+    },
+    "locale": {
+      "firstDayOfWeek": "default"
+    },
+    "commands": [],
+    "linkBehavior": "open-editor"
+  }
+}

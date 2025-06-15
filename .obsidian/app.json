@@ -1,0 +1,9 @@
+{
+  "promptDelete": false,
+  "alwaysUpdateLinks": true,
+  "userIgnoreFilters": null,
+  "showUnsupportedFiles": false,
+  "attachmentFolderPath": "res",
+  "spellcheck": false,
+  "showLineNumber": true
+}
