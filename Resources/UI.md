@@ -1,74 +1,86 @@
 - https://uiverse.io/
-	- #ui/figma #ui/code #ui/component #ui/tailwindcss
+	- #ui/web/figma #ui/web/code #ui/web/component #ui/web/tailwindcss
 - https://www.creative-tim.com/twcomponents
-	- #ui/code #ui/component #ui/tailwindcss
+	- #ui/web/code #ui/web/component #ui/web/tailwindcss
 - https://21st.dev/
-	- #ui/code #ui/component/shadcn #ui/template/freemium #ui/tailwindcss
+	- #ui/web/code #ui/web/component/shadcn #ui/web/template/freemium #ui/web/tailwindcss
 	- template是外站的，这里只是收集
 - https://floatui.com/templates
-	- #ui/component/ #ui/template/freemium #ui/template/page
+	- #ui/web/component/ #ui/web/template/freemium #ui/web/template/page
 - https://www.uidesigndaily.com/
-	- #ui/template/free
+	- #ui/web/template/free
 
-
-- https://atroposjs.com/
-	- #ui/single #ui/3d/hover
-- https://uicolors.app/generate
-	- #ui/single #/ui/color
-- https://toggles.dev/
-	- #ui/single #/ui/toggle/theme #/ui/s
-	- 仅限dark、light的toggle按钮
 - https://jdion.xyz/tilt
-	- #ui/single #/ui/3d/tilt
+	- #ui/web/single #ui/web/3d/tilt
 - https://uiball.com/ldrs/
-	- #ui/single #ui/loader #/ui/spinner 
-- https://tweakcn.com/editor/theme
-	- shadcn主题编辑器
-
-# 模板
-- https://template0.com/
-
-# 非UI
-- https://www.projectwallace.com/
-	- css检查器
+	- #ui/web/single #ui/web/loader #ui/web/spinner 
 
 
-# 可复用组件库
-- https://www.heroui.com/
-	- #/web/reusable_component/installable
-	- nextui
-	- 如radix一样，还额外提供Pro定制组件，不过大多数都是付费的
+
+# UI Library(copy-paste library)
 - https://ui.shadcn.com/
-	- #ui/component/tailwindcss
+	- #ui/web/library #tailwindcss #nextjs #react
 	- 最流行的tailwindcss组件库
 - https://originui.com/
-	- 基于shadcn cil的tailwindcss组件库
-# tailwindcss插件（TailwindCSS版本的Bootstrap）
-- https://daisyui.com/
+	- #ui/web/library #tailwindcss #shadcn	
+- - https://toggles.dev/
+	- #ui/web/library/toggle 
+	- 仅限dark、light的toggle SVG Button
 
-# UI框架
+# UI Framework(not copy-paste library)
 - https://tamagui.dev/
-	- react、reactnative
+	- #ui/web/framework #react #reactnative 
+- [HeroUI (Previously NextUI) - Beautiful, fast and modern React UI Library](https://www.heroui.com/)
+	- #ui/web/framework  #react #tailwindcss #motion #nextjs #tool/palettes #ui/web/component #freemium 
 
 
-# 动画
 
-- Magic UI
-	- #ui/anima
-- Aceternity UI
-	- #ui/anima 
-- Cult UI
-	- #ui/anima 
-- Framer Motion
-	- #ui/anima 
+# Tailwindcss Plugin
+- https://daisyui.com/
+	- #tailwindcss/plugin 
 
-- ThressJS
-	- #ui/3d
+# Resources WebSite
+- https://template0.com/
+	- #ui/web/template/full  #freemium
+- https://tailgrids.com/
+	- #ui/web/template/full #ui/web/template/landing #freemium #tailwindcss #react #vue #vanillajs #alpinejs #ui/web/component #ui/web/block 
+- [Tailblocks — Ready-to-use Tailwind CSS blocks](https://tailblocks.cc/)
+	- #ui/web/block #tailwindcss 
 
-# Email
+
+
+
+# Animation Component
+- [Magic UI](https://magicui.design/)
+	- #ui/web/anima_component #tailwindcss #nextjs #react #shadcncli #ui/web/template/full  #freemium 
+- [Aceternity UI](https://ui.aceternity.com/)
+	-  #ui/web/anima_component #tailwindcss #nextjs #react #shadcncli #motion #ui/web/template/full #freemium 
+- [Cult UI](https://www.cult-ui.com/)
+	- #ui/web/anima_component #tailwindcss  #react #shadcncli #motion #ui/web/template/full #ui/web/template/landing #ui/web/block  #freemium 
+- [Inspira UI: Build beautiful websites using Vue & Nuxt](https://inspira-ui.com/)
+	- #vue #nuxt #tailwindcss #motion #ui/web/block 
+
+
+# Animation Framework
+- [Motion - Web animations for JavaScript, React and Vue](https://motion.dev/)
+	- #ui/web/anima
+- [Homepage | GSAP](https://gsap.com/)
+	- #ui/web/anima
+- [wow.js — Reveal Animations When Scrolling](https://wowjs.uk/)
+	- #ui/web/anima/scroll
+
+# 3D Framework
+- [Three.js – JavaScript 3D Library](https://threejs.org/)
+	- #ui/web/3d
+- - https://atroposjs.com/
+	-  #ui/web/3d/hover
+
+
+# Email Template
 - https://github.com/jonathandion/awesome-emails
+	- #ui/web/email
 
-# UI设计
+# UI Design
 
 - [https://mobbin.com/](https://mobbin.com/)：含移动端、PC端，对已有app的全部界面截图（10$/m）
 
@@ -79,15 +91,17 @@
 - [探索 - 即时设计 (js.design)](https://js.design/community?category=explore)：国内的
 - [Awwwards - Website Awards - Best Web Design Trends](https://www.awwwards.com/)：网站收集
 
-- https://neede.co/#/
+- https://neede.co/#
 	- 设计资源站
 
-# 图片资源
+# Images
 
 - [Pinterest - France design](https://www.pinterest.fr/ideas/design/902065567321/)：就是一些图片分享，参考参考颜色之类的看看还行
 
-
-# Vue
-- https://inspira-ui.com/
-	- 动画组件库
-	- #ui/tailwindcss/vue 
+# None UI
+- https://www.projectwallace.com/
+	- css检查器
+- https://uicolors.app/generate
+	- #tool/palettes
+- https://tweakcn.com/editor/theme
+	- #tool/palettes/shadcn 

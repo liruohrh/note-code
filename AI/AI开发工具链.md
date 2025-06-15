@@ -4,12 +4,12 @@
 	- tldraw 
 - AI UI Copy
 	- https://copycoder.ai/
-		- #ai/ui/copy/prompt #/ai/freemium 
+		- #ai/ui/copy/prompt #ai/freemium 
 - https://uizard.io
-	- #/ai/freemium #ui/template 
+	- #ai/freemium #ui/template 
 	- 生成代码提示词给AI IDE用
 - https://v0.dev/
-	- #/ai/freemium/basically_free #ui/snippet
+	- #ai/freemium/basically_free #ui/snippet
 # Backend & Frontend
 - chatgpt
 - deepseek

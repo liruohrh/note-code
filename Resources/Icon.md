@@ -2,11 +2,13 @@
 
 # fontawesome
 - https://fontawesome.com/
+- #ui/icons
 
 
 # Google Icon Font
 - [Material Icons 的使用及优化Material Icons 的使用及优化，提供了各种平台的官方方案支持，和支 - 掘金](https://juejin.cn/post/7200962751400378423)
 - [fonts.google.com](https://fonts.google.com/icons)
+- #ui/icons
 
 ```html
 
