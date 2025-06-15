@@ -1,37 +1,19 @@
-- https://uiverse.io/
-	- #ui/web/figma #ui/web/code #ui/web/component #ui/web/tailwindcss
-- https://www.creative-tim.com/twcomponents
-	- #ui/web/code #ui/web/component #ui/web/tailwindcss
-- https://21st.dev/
-	- #ui/web/code #ui/web/component/shadcn #ui/web/template/freemium #ui/web/tailwindcss
-	- template是外站的，这里只是收集
-- https://floatui.com/templates
-	- #ui/web/component/ #ui/web/template/freemium #ui/web/template/page
-- https://www.uidesigndaily.com/
-	- #ui/web/template/free
-
-- https://jdion.xyz/tilt
-	- #ui/web/single #ui/web/3d/tilt
-- https://uiball.com/ldrs/
-	- #ui/web/single #ui/web/loader #ui/web/spinner 
-
-
-
 # UI Library(copy-paste library)
 - https://ui.shadcn.com/
-	- #ui/web/library #tailwindcss #nextjs #react
+	- #ui/web/library #tailwindcss #nextjs/ui #reactjs/ui
 	- 最流行的tailwindcss组件库
 - https://originui.com/
 	- #ui/web/library #tailwindcss #shadcn	
-- - https://toggles.dev/
-	- #ui/web/library/toggle 
-	- 仅限dark、light的toggle SVG Button
+- https://floatui.com/
+	- #ui/web/library #tailwindcss #reactjs/ui #vuejs/ui #vanillajs/ui #sveltejs/ui #alpinejs/ui #ui/web/template/landing 
+- [Meraki UI Tailwind CSS Components](https://merakiui.com/)
+	- #ui/web/library #tailwindcss #ui/web/template/landing #ui/web/template/full #freemium 
 
 # UI Framework(not copy-paste library)
 - https://tamagui.dev/
-	- #ui/web/framework #react #reactnative 
+	- #ui/web/framework #reactjs/ui #reactjs/uinative 
 - [HeroUI (Previously NextUI) - Beautiful, fast and modern React UI Library](https://www.heroui.com/)
-	- #ui/web/framework  #react #tailwindcss #motion #nextjs #tool/palettes #ui/web/component #freemium 
+	- #ui/web/framework  #reactjs/ui #tailwindcss #motion #nextjs/ui #tool/palettes #ui/web/component #freemium 
 
 
 
@@ -40,25 +22,33 @@
 	- #tailwindcss/plugin 
 
 # Resources WebSite
+- [Windy Toolbox - Tailwind CSS Templates & Resources](https://windytoolbox.com/)
+	- #ui/web/template/landing 
 - https://template0.com/
 	- #ui/web/template/full  #freemium
 - https://tailgrids.com/
-	- #ui/web/template/full #ui/web/template/landing #freemium #tailwindcss #react #vue #vanillajs #alpinejs #ui/web/component #ui/web/block 
+	- #ui/web/template/full #ui/web/template/landing #freemium #tailwindcss #reactjs/ui #vuejs/ui #vanillajs/ui #alpinejs/ui #ui/web/component #ui/web/block 
 - [Tailblocks — Ready-to-use Tailwind CSS blocks](https://tailblocks.cc/)
 	- #ui/web/block #tailwindcss 
-
-
+- https://uiverse.io/
+	- #ui/web/figma  #ui/web/component  #tailwindcss #ui/web/anima #ui/web/3d 
+	- 完全开源，有主题竞赛（好多大牛参赛）
+- https://www.creative-tim.com/twcomponents
+	- #ui/web/code #ui/web/component #ui/web/tailwindcss
+- https://21st.dev/
+	- #ui/web/code #ui/web/component/shadcn #ui/web/template/freemium #ui/web/tailwindcss
+	- template是外站的，这里只是收集
 
 
 # Animation Component
 - [Magic UI](https://magicui.design/)
-	- #ui/web/anima_component #tailwindcss #nextjs #react #shadcncli #ui/web/template/full  #freemium 
+	- #ui/web/anima_component #tailwindcss #nextjs/ui #reactjs/ui #shadcncli #ui/web/template/full  #freemium 
 - [Aceternity UI](https://ui.aceternity.com/)
-	-  #ui/web/anima_component #tailwindcss #nextjs #react #shadcncli #motion #ui/web/template/full #freemium 
+	-  #ui/web/anima_component #tailwindcss #nextjs/ui #reactjs/ui #shadcncli #motion #ui/web/template/full #freemium 
 - [Cult UI](https://www.cult-ui.com/)
-	- #ui/web/anima_component #tailwindcss  #react #shadcncli #motion #ui/web/template/full #ui/web/template/landing #ui/web/block  #freemium 
+	- #ui/web/anima_component #tailwindcss  #reactjs/ui #shadcncli #motion #ui/web/template/full #ui/web/template/landing #ui/web/block  #freemium 
 - [Inspira UI: Build beautiful websites using Vue & Nuxt](https://inspira-ui.com/)
-	- #vue #nuxt #tailwindcss #motion #ui/web/block 
+	- #vuejs/ui #nuxt #tailwindcss #motion #ui/web/block 
 
 
 # Animation Framework
@@ -72,15 +62,24 @@
 # 3D Framework
 - [Three.js – JavaScript 3D Library](https://threejs.org/)
 	- #ui/web/3d
-- - https://atroposjs.com/
-	-  #ui/web/3d/hover
 
+# Single Scope
+- https://atroposjs.com/
+	-  #ui/web/3d/tilt
+-  https://jdion.xyz/tilt
+	- #ui/web/3d/tilt
+- [LDRS — UI Ball](https://uiball.com/ldrs/)
+	-  #ui/web/spinner 
+- - https://toggles.dev/
+	- #ui/web/library/toggle 
+	- 仅限dark、light的toggle SVG Button
 
 # Email Template
 - https://github.com/jonathandion/awesome-emails
 	- #ui/web/email
 
 # UI Design
+- https://www.uidesigndaily.com/
 
 - [https://mobbin.com/](https://mobbin.com/)：含移动端、PC端，对已有app的全部界面截图（10$/m）
 
