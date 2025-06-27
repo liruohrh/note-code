@@ -1,0 +1,2 @@
+- [copier](https://github.com/jinzhu/copier)：默认`copier.Copy(&to, &from)`不设置from没有的值、from的零值也会进行设置、nil值不会拷贝
+	- 忽视零值：`copier.CopyWithOption(&to, &from, copier.Option{IgnoreEmpty: true})`

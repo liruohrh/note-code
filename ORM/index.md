@@ -1,0 +1,8 @@
+- sea-orm（Rust）：以typsafe代码生成为核心
+- sqlc（多语言）：以typsafe代码生成为核心，根据SQL生成静态SQL，动态SQL需用其他方式实现（可以混合一个动态SQL框架使用，但是不是特别建议）
+- jOOQ（Java）：静动态SQL，代码生成+DSL，代码生成包含字段对象（但是不能说很好的规避字段名映射）
+- ENT（Go）：以typsafe代码生成、Model为核心，编写Model，自动生成user.Name这样的函数
+- [Gorm Gen](https://gorm.io/zh_CN/gen)：Gorm的代码生成工具，不仅生成user.Name.opt这样的函数，还支持从定义接口中写SQL（动态、静态、片段）从而生成typsafe代码
+	- gorm + gorm gen就和mybatis+mybatis plus一样
+- 以上ORM都趋势于生成Table变量，Table.Field这样的变量，Field有各种opt函数，对于实现，但其实都不如Mybatis这样的静动态，无论是简单的、还是复杂的，亦或是重构、修改时（只要字段名都用table.field这样就很好全局替换），且那些都是专注于动态SQL或者静态SQL，Gorm能和Mybatis一样写静动态SQL，但是是写在接口注释中，虽然不是很好，但还算行（某些情况下也算是比Mybatis好）。
+	- 可以为他们写一个模板，增、查改删（根据主键、外键、索引、唯一索引、组合索引）

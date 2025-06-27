@@ -14,15 +14,16 @@
   - 项目信息，权限申请等
   - 在根目录下
 - service worker
-  - 监听事件等，比如快捷键
-  - 通常是根目录下的 background.js（设其`background.service_worker`）
-  - [支持的事件/API](https://developer.chrome.com/docs/extensions/mv3/service_workers/events/)
+	- 监听事件等，比如快捷键
+	- 通常是根目录下的 background.js（设其`background.service_worker`）
+	- [支持的事件/API](https://developer.chrome.com/docs/extensions/mv3/service_workers/events/)
 - content scripts
-  - 内容脚本文件，即对页面的脚本
-  - 通常是根目录下的 scripts，需要设置在`content_scripts`中，为 scrpits 分组，每组可以包含多个 js 文件，多个 matches 规则
+	- 内容脚本文件，即对页面的脚本
+	- 通常是根目录下的 scripts，需要设置在`content_scripts`中，为 scrpits 分组，每组可以包含多个 js 文件，多个 matches 规则
+	- 基本上就只能使用chrome.runtime
 - The popup and other pages
-  - 弹出页面（点击插件图标时弹出）和其他页面
-  - popup 可以单独立写在 popup 目录
+	- 弹出页面（点击插件图标时弹出）和其他页面
+	- popup 可以单独立写在 popup 目录
 - 交互模式
   - 基于`chrome.action.onClick`的全自动模式（点击扩展仅仅启动扩展，可以在 Badge 中显示 text 告诉用户是否开启了）
     - 逻辑主要集中在 background 和 content scripts

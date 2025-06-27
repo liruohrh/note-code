@@ -1,0 +1,5 @@
+- Select&Omit不仅仅会作用于Query，还作用于
+	- Update：指定\忽视更新字段
+	- Delete
+	- Insert（指定插入字段）
+	- 关联操作：`Select("User.Pets")`
