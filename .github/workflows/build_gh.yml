@@ -17,8 +17,9 @@ jobs:
       - name: Run export with Docker
         run: |
           docker run --rm \
+            --name obsidian-webpage-export \
             -v ./:/vault \
-            -v ./output:/output
+            -v ./output:/output \
             klaxalk/obsidian-webpage-export:1.9.0
 
       - name: Deploy to GitHub Pages
