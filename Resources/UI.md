@@ -104,3 +104,7 @@
 	- #tool/palettes
 - https://tweakcn.com/editor/theme
 	- #tool/palettes/shadcn 
+- https://easingwizard.com/
+	- #css/tool/anima
+- https://css-tricks.com/
+	- #css/tips
