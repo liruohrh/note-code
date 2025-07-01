@@ -1,6 +1,9 @@
 icons/
 workspace.json
 
-plugins/**/*.*
-!plugins/**/data.json
+# ignore plugins, for can not auto load when use in other device
+plugins/
+# only ignore not config file
+# plugins/**/*.*
+# !plugins/**/data.json
 themes/
