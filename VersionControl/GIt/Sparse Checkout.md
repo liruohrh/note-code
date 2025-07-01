@@ -1,0 +1,20 @@
+- 必须先`git config core.sparsecheckout true`
+- 作用：按需下载，下载一次会后不会再下载，没有下载则会下载
+- `git sparse-checkout`切换工作区视图
+	- `init`必须在一个仓库下，这个init会创建`.git/info/sparse-checkout`文件
+		- 默认内容是`/*`（所有文件和目录）`!/*/`（不要所有目录）
+			- 即仅仅需要根目录下的文件
+	- `set pattern...` 会清空原来的
+		- 一般都用`/`开头，如果是一个路径
+		- `/a*==/a==/a/==/a/*`
+		- `--stdin`
+		- sparse模式：
+		- `--cone`默认
+		- `--sparse-index`
+	- `add pattern...`
+	- `reapply`重新应用sparse-checkout配置（更新workspace）
+	- `list`显示所有pattern
+	- `disable`禁用sparse-checkout
+- 不推荐配合`git init`，而推荐配合`git clone --sparse`
+	- 因为`git init git sparse-checkout git remote add xxx xxx git pull xxx xxx`会下载所有文件
+	- 而`git clone --sparse`仅仅是下载根目录下的文件，不下载所有目录，执行`git sparse-checkout`才会下载
