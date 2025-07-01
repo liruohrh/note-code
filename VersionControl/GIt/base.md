@@ -48,7 +48,26 @@
 - `-r`：递归删除目录
 - `-f`： `override the up-to-date check`，即modifed的文件也能删除（强制删除）
 ## 彻底删除的方法
-- 
+- [https://blog.csdn.net/zxxshaycormac/article/details/123336328](https://blog.csdn.net/zxxshaycormac/article/details/123336328)
+- 注意：首先先确保分支是干净的
+- `git filter-branch --force --index-filter "git rm --cached --ignore-unmatch -r target/" --prune-empty --tag-name-filter cat -- --all`
+	- --force 允许覆盖旧的 refs/original/*
+	- --index-filter 用 git rm 操作来修改每一个提交的索引
+	- --cached 不删除工作区文件，只处理 Git 索引
+	- --ignore-unmatch 避免文件不存在时报错
+	- --prune-empty 删除那些因为文件被移除后变空的提交
+	- --tag-name-filter cat 保留原标签名
+	- -- --all 对所有引用（分支、标签）生效
+- 还需要
+	- `rm -rf .git/refs/original/` 删除原始引用（重写时的原备份）
+	- `git reflog expire --expire=now --all` 删除 reflog（Git 操作日志）
+	- `git gc --prune=now --aggressive` 执行垃圾回收（强制清除 dangling object）
+	- `git log --all -- target/`查看是否还存在
+- 最后再强制push
+	- `git push origin --force --all`
+	- `git push origin --force --tags`
+- 或者`git filter-repo --path target/ --invert-paths`
+	- 需要安装filter-repo
 
 # git restore
 
