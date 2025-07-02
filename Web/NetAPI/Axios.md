@@ -14,9 +14,9 @@
 - 拦截器允许修改请求、响应的任何属性
 
 # 错误
-- 客户端在发生时就发生错误，error.response、error.message是空，可以使用code（什么错误），stack（堆栈）属性
+- 客户端在请求时就发生错误，error.response、error.message是空，可以使用code（什么错误），stack（堆栈）属性
 - 请求超时：error.response是空，推荐用error.message
-
+- 
 
 
 
