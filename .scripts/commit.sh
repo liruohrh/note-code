@@ -1,0 +1,1 @@
+git commit -m "vault backup: $(date +'%Y-%m-%d %H:%M:%S')"
