@@ -11,7 +11,22 @@
 	- VSCode插件
 # Build
 - [metro 打包工具](https://metrobundler.dev/)
-# expo框架 
+
+
+# 无框架
+- `npx @react-native-community/cli init`
+	- `npx react-native init`是旧的，0.76后官方推荐用@react-native-community/cli来创建项目等，react-native则用来执行编译等
+- 默认有一个
+	- `import { NewAppScreen } from '@react-native/new-app-screen';`
+	- `<NewAppScreen templateFileName="App.tsx" />`
+	- 显示React Native的一些版本、文档，templateFileName只是单纯的字符串，显示文本
+- 开发模式（非常有意思）
+	- `yarn android`进行启动dev服务器、编译app并安装
+	- 如果没有修改原生代码，则只需要启动dev服务器即可`yarn start`
+		- 但是注意要转发端口`adb reverse tcp:8081 tcp:8081`
+
+
+# Expo框架 
 - `npx create-expo-app@latest`
 - `/scripts/reset-project.js`该脚本用于把默认代码迁移到app-example，写自己代码
 

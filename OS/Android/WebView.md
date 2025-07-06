@@ -27,6 +27,8 @@ func call(webView: WebView){
 		} 
 	}else{
 		if(hasAdditionalHttpHeaders){
+		//UserAgent放在headers中是无用的，必须给webview.settings设置
+		//如果url不以/结尾，会自动变为以/结尾
 			webView.loadUrl(url!!, additionalHttpHeaders)
 		}else{
 			webView.loadUrl(url!!)  
@@ -37,19 +39,20 @@ func call(webView: WebView){
 
 
 # WebView常见Settings
-- LoadsImagesAutomatically（true）：自动加载data/network url schema的image（即img标签）
-- BlockNetworkImage（false）：阻断加载network url schema的image
-- BlockNetworkLoads：阻断加载所有网络资源
+- loadsImagesAutomatically（true）：加载所有schema的image
+- blockNetworkImage（false）：阻断加载网络schema的image
+- blockNetworkLoads：阻断加载所有网络资源
 	- 有android.Manifest.permission.INTERNET时默认false
 	- 没有网络权限时设置为false，会抛出 SecurityException 
-- JavaScriptEnabled（false）：可执行JS
-- DomStorageEnabled（false）：DOM Storage API
-- UserAgentString：设置后，忽视User-Agent Client Hints headers 和 navigator.userAgentData
+- javaScriptEnabled（false）：可执行JS
+- domStorageEnabled（false）：DOM Storage API
+- userAgentString：不设置就用默认的，在headers中的是会被忽视的
 - CacheMode：
-- MixedContentMode：http/https
+- MixedContentMode：http/https混合
 
 # WebView常见方法
-- evaluateJavascript：执行JS，返回值回调
+- evaluateJavascript：执行JS，回调接收返回值
+	- 返回值：返回最后一行执行的表达式，无返回值则是字符串`"null"`
 
 # WebViewClient
 - 接收notifications 和 requests
@@ -63,6 +66,15 @@ func call(webView: WebView){
 	- 响应为null则继续执行这个请求
 - shouldOverrideUrlLoading：撤销URL的加载，即取消请求
 - onLoadResource：将要加载的资源
+
+执行顺序（[可以做个参考](https://blog.csdn.net/freak_csh/article/details/95530243)）
+- onPageStarted
+- shouldOverrideUrlLoading (if navigation by click or js)
+	- 如果重定向，回到onPageStarted，这个原本的URL可能也会进行调用onPageFinished
+- shouldInterceptRequest (many times per resource)
+- onReceivedHttpError/onReceivedError (optional)
+- onPageFinished：对于动态部分则可能仍然在进行中
+
 
 
 # 坑

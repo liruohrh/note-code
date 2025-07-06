@@ -11,14 +11,23 @@
 
 ## Codegen 支持的 TS 类型（简略表）
 
-| TS 类型                         | 是否支持 | 说明                 |
-| ----------------------------- | ---- | ------------------ |
-| `number`, `string`, `boolean` | ✅    | 基础类型               |
-| `void`, `Promise<T>`          | ✅    | 支持异步调用             |
-| `{ [key: string]: string }`   | ✅    | 可用作 object map     |
-| `Map<K, V>`                   | ❌    | 不支持                |
-| `Record<string, string>`      | ❌    | 和 Map 一样也不支持       |
-| 自定义 alias + object            | ✅    | 可以手动定义 alias 类型再使用 |
+| TS 类型                         | 是否支持 | 说明                 |     |
+| ----------------------------- | ---- | ------------------ | --- |
+| `number`, `string`, `boolean` | ✅    | 基础类型               |     |
+| `void`, `Promise<T>`          | ✅    | 支持异步调用             |     |
+| `{ [key: string]: string }`   | ✅    | 可用作 object map     |     |
+| `Map<K, V>`                   | ❌    | 不支持                |     |
+| `Record<string, string>`      | ❌    | 和 Map 一样也不支持       |     |
+| 自定义 alias + object            | ✅    | 可以手动定义 alias 类型再使用 |     |
+
+- Promise：和JS一样，resolve是成功，reject则是拒绝，但是reject有很多签名，
+	- reject的error是这么一个对象
+		- message：message参数，如果console.log会得到 `{异常类型}: {message}`，toString也是
+		- code：code参数
+		- nativeStackAndroid：传递的异常的
+		- name：异常类型名
+		- userInfo：传递的userInfo
+
 ## 实现
 ### 1. JS/TS接口
 
@@ -36,14 +45,15 @@ export default TurboModuleRegistry.getEnforcing<Spec>(
 ```
 
 - 这个导出default就是这个Spec接口
-- `import NativeDemoTurbo from "@/specs/NativeDemoTurbo"`
-- `NativeDemoTurbo.hello("xxx")`
+	- `import NativeDemoTurbo from "@/specs/NativeDemoTurbo"`
+	- `NativeDemoTurbo.hello("xxx")`
+- 生成的原生接口名就是这个文件名+Spec，`getEnforcing`传递的name就是`BaseReactPackage#getModule`时传递的name
 
 ### 2. package.json配置Codegen
 ```json
 {
 	"codegenConfig": {
-		//生成的接口名
+		//配置名，影响android\app\build\generated\source\codegen\jni下的目录、文件名
 	    "name": "NativeDemoTurboSpec",
 	    "type": "modules",
 	    //JS Spec代码目录
@@ -64,5 +74,5 @@ export default TurboModuleRegistry.getEnforcing<Spec>(
 - `cd ios && bundle install && bundle exec pod install`  
 
 ### 4. 在原生实现
-- 直接用各自IDE打开android/ios目录
-- 
+- 直接用各自IDE打开android/ios目录，编写Spec的实现Module以及Package
+- 推荐新建简单的React Native项目来完成，这样就不需要加载一大堆无用module。
