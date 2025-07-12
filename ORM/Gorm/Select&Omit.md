@@ -3,3 +3,4 @@
 	- Delete
 	- Insert（指定插入字段）
 	- 关联操作：`Select("User.Pets")`
+		- `clause.Associations`表示所有关联

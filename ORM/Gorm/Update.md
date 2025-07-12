@@ -1,9 +1,15 @@
 - 更新时：用`Model(&user).Updates(user)`，更新的同时还会更新user对象
 	- 推荐用updates的对象ID是零值，避免生成更新ID语句
 
-- 全量更新：Save(model)
+- 全量更新：`Save(model)`
+	- 无论是`Save`还是`Select(*).Updates()`都会自动更新关联
+		- 仅如果Id不存在就插入新数据，否则是更新关联表关联字段的Id
+		- 注意：仅仅只是更新
+	- 更新关联表全字段：配置`FullSaveAssociations`可以全局或者`db.Session(&gorm.Session{FullSaveAssociations: true})`
+	- - 忽视关联：指定`Omit`，不操作任何关联则是`Omit(clause.Associations)`
+- 或者指定`Omit`，不操作任何关联则是`Omit(clause.Associations)`
 - 非零值更新：Updates(model)
-	- 更新所有指定值：Updates(map) 或者 Select().Updates()
+	- 更新所有指定值：Updates(map) 或者 `Select(*).Updates()`
 	- Updates(dto)：用非model进行更新会导致不会触发钩子（如UpdatedAt）
 - ，如此一来，设置为指针类型+Update更新会好一点
 - DTO：用dto不会触发model方法，如UpdatedAt
