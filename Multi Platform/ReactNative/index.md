@@ -38,8 +38,8 @@
 	- [local development build](https://docs.expo.dev/guides/local-app-development/)：构建自己的APK，而不是上传到Expo Go app，因此可以写原生代码
 		- 如何还需要调式功能，需要自己安装expo-dev-client，`npx expo install expo-dev-client`
 			- 当安装了这个，就必须只能自己编译应用，无法使用Expo Go，除非uninstall这个依赖
-		- `npm run android | npx expo run:android`
-		- `npm run ios | npx expo run:ios`
+		- `npx expo run:android`
+		- `npx expo run:ios`
 		- 第一次运行会生成android或者ios目录（原生代码）
 			- 第一次编译巨慢无比，第二次非常快（可能是不涉及原生代码修改就会非常快）
 			- 第一次编译时的第一次刷新页面也慢了一点，后面就和Expo Go开发一样了（可能和上面一样，不涉及原生代码编译）
