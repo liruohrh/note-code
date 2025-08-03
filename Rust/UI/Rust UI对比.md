@@ -55,6 +55,11 @@
 
 ---
 
+## Floem
+- [lapce/floem：具有细粒度反应性的原生 Rust UI 库 --- lapce/floem: A native Rust UI library with fine-grained reactivity](https://github.com/lapce/floem)
+- 比较不主流的PC UI框架
+
+
 # 对比总结
 
 | 特性            | Makepad                                       | Dioxus                                         | egui                                  | Slint                                      |
