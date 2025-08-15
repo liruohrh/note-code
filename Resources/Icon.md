@@ -7,7 +7,9 @@
 
 # Google Icon Font
 - [Material Icons 的使用及优化Material Icons 的使用及优化，提供了各种平台的官方方案支持，和支 - 掘金](https://juejin.cn/post/7200962751400378423)
-- [fonts.google.com](https://fonts.google.com/icons)
+- [fonts.google.com](https://fonts.google.com/icons)：查询icons
+- [CSS API 更新  |  Google Fonts  |  Google for Developers](https://developers.google.com/fonts/docs/css2?hl=zh-cn)：使用url引入icons
+- https://github.com/google/material-design-icons/tree/master ：直接下载资源
 - #ui/icons
 
 ```html

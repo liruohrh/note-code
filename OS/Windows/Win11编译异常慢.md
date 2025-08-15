@@ -1,0 +1,7 @@
+- https://github.com/golang/go/issues/71981#issuecomment-3083049372
+	- Microsoft PC Manager Service会让编译程序变慢，这服务中禁用他比较合适，反正也没用（可能无效）
+- pw添加通配符排除项，管理员运行：`Add-MpPreference -ExclusionPath "$env:USERPROFILE\AppData\Local\Temp\go-build*"`
+	- （可能无效）
+- 还是直接在Windows安全中心关闭实时保护有效
+	- 甚至连把所有盘加入排除项也有效果
+- 使用开发卷（虚拟、物理）（可能无效）

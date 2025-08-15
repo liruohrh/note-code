@@ -1,2 +1,0 @@
-- https://github.com/golang/go/issues/71981#issuecomment-3083049372
-	- Microsoft PC Manager Service会让编译程序变慢，这服务中禁用他比较合适，反正也没用
