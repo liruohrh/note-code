@@ -2,6 +2,7 @@
 	- 默认路径：`%APPDATA%/ms-playwright-go`
 - 运行
 	- 启动NodeJS服务器：`playwright.Run`
+		- `node cli.js run-driver`
 	- 启动浏览器：
 		- `pw.Chromium.ConnectOverCDP`：使用CDP连接已启动的浏览器
 		- `pw.Chromium.LaunchPersistentContext`：使用Playwright启动浏览器
