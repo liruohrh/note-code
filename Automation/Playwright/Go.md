@@ -19,3 +19,11 @@
 				- 这个text是多空格变一个、换行变空格、trimSpace后的text，且input.type是button、submit匹配的是value而不是text content
 				- 匹配的是最小元素
 	- Err：这个方法不是获取Err，也不知道是什么，Locator必须要执行一个操作后才会进行获取，如`Locaotr(xx).Waitfor`
+
+# 启动
+- 使用Playwright中的BrowserType
+	- Launch：使用node启动浏览器，返回一个浏览器（无contexts）
+	- LaunchPersistentContext：使用node启动浏览器，且仅返回一个context，browser对象是nil，只能有一个context
+	- Connect：连接用node启动的浏览器（也就是连接用一个js服务器启动的浏览器）
+	- ConnectOverCDP：直接使用CDP连接已经启动的浏览器
+
