@@ -26,4 +26,5 @@
 	- LaunchPersistentContext：使用node启动浏览器，且仅返回一个context，browser对象是nil，只能有一个context
 	- Connect：连接用node启动的浏览器（也就是连接用一个js服务器启动的浏览器）
 	- ConnectOverCDP：直接使用CDP连接已经启动的浏览器
+- 每个BrowserContext都是一个独立的浏览器，newContext并不是无痕，而是一个特殊的独立浏览器，用独立的cookies等数据
 
