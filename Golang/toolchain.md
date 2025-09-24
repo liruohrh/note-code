@@ -6,6 +6,7 @@
 	- 如果 `GOSUMDB=off` ，工具链下载会因为缺少验证而失败。模式 `GOPRIVATE` 和 `GONOSUMDB` 不适用于工具链下载。
 - `go get toolchain@version`
 	- 会在比go.mod的go更高时，添加指令`toolchain go{version}`（toolchain默认就是go.mod的go），还可能会下载 `golang.org/x/xxxpackage`
+	- 推荐先用低版本，然后基本上就会自动下载
 
 - go在运行命令时，如果go.mod声明的go或者toolchain比当前go版本更高时，自动执行`go get go@version`（可以通过go version确定到底使用了什么版本）
 
