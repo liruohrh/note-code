@@ -19,3 +19,9 @@
 - `go get` 和 `go mod tidy` 命令保持 `go` 行大于或等于任何必需依赖模块的 `go` 行
 	- 也就是下载依赖时可能会导致go 行更新
 	- https://go.dev/doc/toolchain#get
+
+
+# 问题
+## go 1.23下载不了
+
+- 改为go 1.23.0就可以自动下载toolchain
