@@ -1,0 +1,12 @@
+- declare module "xxx" 给某个模块强行添加类型
+	- 给某个纯js依赖添加类型声明时，xxx就是该package的名
+	- xxx其实就是中用的时候的 `import {x} from "xxx"` 
+		- 即此module就类似于一个js module，即文件，xxx则是xxx/index.js
+	- declare module不在全局模块中，因为其本身就是一个模块
+	- declare global则是全局声明，无需中使用时导入
+	- .d.ts里的声明就是一个全局声明
+		- 如`const v: string` 、`declare const v: string`
+		- 但如果是`export const v: string`，则会是模块局部声明，这个模块就不能直接声明全局声明了，需要在declare global中声明
+			- 另外，如果想直接在declare global中声明，必须先用import或者export让ts把文件视为模块先（一般推荐用`export {};`导出空对象）。
+	- 同一个module的定义如果有多个地方声明，则会合并
+- `export x form xx  \n import(xx)`：from xx需要确保xx被加载，import确保xx被加载

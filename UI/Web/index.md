@@ -4,7 +4,7 @@
 	- 其他的模块如Router、HeadlessUI（Table、Form、Virtual）、Pacer（Rate Limiter、Debouncing、Throttling、Queuing）、Store
 - Hooks
 	- [ReactUse](https://www.reactuse.com/)
-	- [VueUse](https://vueuse.org/)
+	- [@vueuse/core](https://vueuse.org/)
 - Functions
 	- [Lodash](https://www.lodashjs.com/)
 - Date
