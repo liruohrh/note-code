@@ -1,4 +1,4 @@
-- declare module "xxx" 给某个模块强行添加类型
+- declare module "xxx" 给某个模块强行添加类型（注意是"xxx"而不是xxx）
 	- 给某个纯js依赖添加类型声明时，xxx就是该package的名
 	- xxx其实就是中用的时候的 `import {x} from "xxx"` 
 		- 即此module就类似于一个js module，即文件，xxx则是xxx/index.js
