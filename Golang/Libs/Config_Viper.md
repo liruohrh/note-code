@@ -1,0 +1,34 @@
+- 文件类型：`SupportedExts = []string{"json", "toml", "yaml", "yml", "properties", "props", "prop", "hcl", "tfvars", "dotenv", "env", "ini"}`
+	- 优先级也是这个
+- 优先级：Set、Flag、Env、File、external key/value stores、Default
+	- kv stores：Etcd、Etcd3、Consul、Firestore、NATS
+- Get
+	- Getxxx
+	- key：点分割，即对象语法，数组则索引就是属性名
+- 设置文件
+	- 文件路径：viper.SetConfigFile（如这样的都是默认viper对象，可以创建多个）
+	- 文件搜索：
+		- viper.SetConfigName：文件名
+		- viper.SetConfigType：设置目标文件扩展名
+		- viper.AddConfigPath：在多个目录中仅搜索一个文件
+- 读文件：
+	- viper.ReadInConfig：读取设置好的文件
+	- viper.ReadConfig：读取reader
+- 写文件
+	- 同文件：viper.WriteConfig
+		- SafeWriteConfig：文件不能存在
+	- 其他文件：WriteConfigAs
+		- SafeWriteConfigAs同理
+- 环境变量
+	- viper.SetEnvPrefix：设置前缀
+	- 手动绑定每个：viper.BindEnv
+		- 自动绑定所有：viper.AutomaticEnv
+- flag
+	- [spf13/viper: Go configuration with fangs](https://github.com/spf13/viper?tab=readme-ov-file#working-with-flags)
+	- 绑定某个viper.BindPFlag
+	- 绑定所有viper.BindPFlags
+- Watch
+	- viper.OnConfigChange：监听文件变化，Name就是该文件路径，还有Op判断
+		- 基于`github.com/fsnotify/fsnotify`实现
+- 反序列化到对象：viper.Unmarshal
+	- 基于：[github.com/go-viper/mapstructure](https://github.com/go-viper/mapstructure)
