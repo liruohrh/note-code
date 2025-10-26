@@ -1,0 +1,5 @@
+- 专门用于sdk等管理，同时适配shell、ide环境
+- mise use tool@version会自动安装，同时设置mise.toml
+- mise.toml
+	- 如tool版本、环境变量
+	- 全局（.config/mise/config.toml）、项目（mise.toml）

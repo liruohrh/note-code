@@ -1,0 +1,1 @@
+- 跨平台且结合了一般shell、powershell优点

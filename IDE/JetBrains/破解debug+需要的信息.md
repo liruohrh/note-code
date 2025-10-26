@@ -1,8 +1,4 @@
-
 # 测试2022.3.3--223.8836.41
-```
-
-
 
 ## CRT、 CRL（Certificate Revocation List，吊销列表）
 - SHA1withRSA：这个虽然和2022.3.3的key中part256B和part3证书基本一样，但是最关键的公钥和指纹不一样
@@ -58,23 +54,23 @@ MIICxTCBrgIBATANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBFw0xNTEwMDIx
 
     "auth_time": 1700220872,
 
-    "email": "2372221537@qq.com",
+    "email": "xxx@qq.com",
 //2023-11-17 20:34:37
     "exp": 1700224477,
 
-    "first_name": "永民",
+    "first_name": "xx",
 
-    "full_name": "永民 李",
+    "full_name": "xxx xxx",
 
     "iat": 1700220877,
 
     "iss": "https://oauth.account.jetbrains.com/",
 
-    "jba_login": "liruoy",
+    "jba_login": "xxx",
 
     "jti": "cd2ed031-835b-452d-a741-d11f296df18a",
 
-    "last_name": "李",
+    "last_name": "xxx",
 
     "linked_emails": [],
 
@@ -84,7 +80,7 @@ MIICxTCBrgIBATANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBFw0xNTEwMDIx
 
     "sub": "12642343",
 
-    "user_id": "cwvwvuawqpuv1cs6su4331hy7"
+    "user_id": "wwwwwww"
 
 }
 //这个可能就是签名RSA256的公钥
