@@ -5,7 +5,7 @@
 	- 因目标规则变化而修改，如果因此添加了功能，则用feat
 - pref
 - chore：构建过程或辅助工具的变动
-	- 如.gitignore、仅文件位置变动、ide配置
+	- 如.gitignore、仅文件位置变动、ide配置、与业务代码无关的脚本
 - style：代码风格、格式化
 - test
 - docs：文档、代码注释
