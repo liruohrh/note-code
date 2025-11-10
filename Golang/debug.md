@@ -1,12 +1,18 @@
 # dlv
-## attach
-```powershell
-dlv attach (get-process "processname without .exe").Id --continue --accept-multiclient --headless --listen=localhost:2345 --api-version=2
-```
-- `--continue`：连接后不会让程序停止在main，而是继续运行
-	- `--accept-multiclient` `--continue`必须要这个
-- `--headless --listen=localhost:2345`：开启api模式，允许远程监听
-	- 直接执行不会在后台运行
+- 有3种方式
+	- `dlv debug xxxpackage`：直接debug源码
+		- 默认当前目录的main
+	- `dlv exec xxx`：直接debug可执行文件
+	- `dlv attach pid`：直接debug已启动程序
+- 如：
+	- `dlv attach xxxpid --headless --listen=localhost:2345 --api-version=2`
+	- `dlv attach (get-process "processname without .exe").Id --continue --accept-multiclient --headless --listen=localhost:2345 --api-version=2`
+- 参数
+	- `--continue`：连接后不会让程序停止在main，而是继续运行
+		- `--accept-multiclient` `--continue`必须要这个
+	- `--headless --listen=localhost:2345`：开启api模式，允许远程监听
+		- 直接执行不会在后台运行
+	- 给main传递参数：`-- -config config.yaml -port 8080`
 ## connect
 - `dlv connect localhost:2345`
 	- 进入交互debug模式，exit会停止connect
