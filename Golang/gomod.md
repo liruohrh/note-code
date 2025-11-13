@@ -1,0 +1,6 @@
+- 主版本升级：
+	- 包名后添加`/vn`，n表示当前版本
+- 多仓库支持：
+	- 根目录不需要gomod，每个子目录都是一个gomod
+	- 标签都是`子目录@版本号`
+	- 安装方式：`go get subpackagename@version`
