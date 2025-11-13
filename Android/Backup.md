@@ -1,0 +1,7 @@
+- android11后基本废了
+- `adb backup -f legedo.ab -noapk packagename` 
+	- AndroidManifest application#android:allowBackup必须不能为false
+	- 不推荐加密，解压比较麻烦
+		- `java -jar abe.jar unpack backup.ab backup_decrypted.ab <你的密码>`
+- 解压
+	- 移除文件头：`dd if=backup.ab bs=1 skip=24 of=backup.tar.gz`
