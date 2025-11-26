@@ -1,3 +1,5 @@
+内容撑开的问题
+- padding比较容易撑大内容，因此如果可以用margin就用margin
 # 100%
 - 设置html的width、height为100%只是设置为视口的宽高
 
