@@ -1,0 +1,9 @@
+- xor + 编码字符串（如base62）：xor速度极快，A xor B xor B = A，因此设置一个合适的B即可
+	- 但是也正因为快，极容易破解，仅仅起一定的防范作用
+- hashid
+	- https://sqids.org/
+		- https://github.com/sqids/sqids-go
+			- 可防脏词、速度更快
+		- https://github.com/speps/go-hashids
+			- 一个ID类型的实现，https://github.com/emvi/hide
+	- 一种可逆的随机编码，和xor+编码字符串一样，不过更加随机一点，且密钥是字符串而不是数字

@@ -1,3 +1,6 @@
+# 项目结构
+- [组织 Go 模块 - Go 编程语言 --- Organizing a Go module - The Go Programming Language](https://go.dev/doc/modules/layout)
+
 # 文件路径与测试、运行 
 - 当测试时，如goland通常会在测试目录中执行，导致配置文件路径或者其他路径不对，或者文件相对路径在非项目根目录时总是要做一些修改，比如修改运行目录或者修改文件路径，有人习惯在项目根目录下运行，也有人习惯按ide默认行为运行
 
