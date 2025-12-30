@@ -1,5 +1,5 @@
-+ [https://developer.chrome.com/docs/extensions/mv3/manifest/](https://developer.chrome.com/docs/extensions/mv3/manifest/)
-+ 如果没有在manifest.json注册功能，就不能使用（比如没有comands就不能用chrome.commands）
+- [https://developer.chrome.com/docs/extensions/mv3/manifest/](https://developer.chrome.com/docs/extensions/mv3/manifest/)
+- 如果没有在manifest.json注册功能，就不能使用（比如没有comands就不能用chrome.commands）
 
 ```json
 {
@@ -71,9 +71,12 @@
 ```
 
 # 匹配规则
-+ `*`：通配符，比如`https://a.*/*`表示权威域名是a的任意路径，第一个*从a.通配到/，第二个从/通配剩余的 w
+
+- `*`：通配符，比如`https://a.*/*`表示权威域名是a的任意路径，第一个*从a.通配到/，第二个从/通配剩余的 w
 
 # permissions
-+ [https://developer.chrome.com/docs/extensions/mv3/declare_permissions/](https://developer.chrome.com/docs/extensions/mv3/declare_permissions/)
-+ `activeTab`如果没有，就不能访问属于某个tab的数据，只能访问共享的
+
+- [https://developer.chrome.com/docs/extensions/mv3/declare_permissions/](https://developer.chrome.com/docs/extensions/mv3/declare_permissions/)
+- `activeTab`如果没有，就不能访问属于某个tab的数据，只能访问共享的
+
 
