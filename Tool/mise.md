@@ -1,0 +1,14 @@
+- 2 种执行方式
+	- 设置环境变量和 PATH：`mise activate xxxshell`
+	- shim：在 use 或者安装时会自动在`~/.local/share/mise/shims`创建可执行文件链接
+		- `mise activate --shims`  则会设置到 PATH 中
+		- https://mise.jdx.dev/dev-tools/shims.html#shims-vs-path
+- 专门用于sdk等管理，同时适配shell、ide环境
+	- `mise use tool@version `会自动安装，同时设置mise.toml
+		- `-g/--global`：全局使用
+- mise.toml
+	- 如tool版本、环境变量
+	- 全局（.config/mise/config.toml）、项目（mise.toml）
+- 使用已安装路径：`mise link tool@version path`
+- 查看当前 tools `mise ls`
+- 查看可获取 tools `mise ls-remote xx`
