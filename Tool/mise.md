@@ -12,3 +12,7 @@
 - 使用已安装路径：`mise link tool@version path`
 - 查看当前 tools `mise ls`
 - 查看可获取 tools `mise ls-remote xx`
+
+- MISE_INSTALL_PATH=xxx/mise
+- MISE_DATA_DIR=xxx/mise
+	- 或者XDG_DATA_HOME
