@@ -1,0 +1,4 @@
+- mac软件
+- 坑点：
+	- 用镜像文件保存数据，迁移很麻烦，设置数据目录不会自动迁移需要手动，因此最好一开始就设置 Settings/Storage
+	- 默认关闭App后会关闭Daemon（docker被关），设置Settings/General/ Keep running when menu bar app is quit
