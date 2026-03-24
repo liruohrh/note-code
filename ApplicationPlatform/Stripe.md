@@ -6,7 +6,7 @@
 - https://docs.stripe.com/payments/checkout/how-checkout-works
 - https://docs.stripe.com/payments/accept-a-payment
 - 支付服务重定向让浏览器发起的请求，参数在query里。
-- 就session_id参数，需要用sdk再调用api获取session信息
+	- 就session_id参数，需要用sdk再调用api获取session信息
 
 - payment_status
 	- unpaid
