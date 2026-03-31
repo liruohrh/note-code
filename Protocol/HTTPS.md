@@ -1,0 +1,11 @@
+- 开启TSL
+- 自签名问题：
+	- 浏览器：
+		- 安全显示：chrome等大多数浏览器都用系统的，因此只需要安装到系统，浏览器就不会显示不安全。
+		- API：自签名不会导致无法调用API，即便没有安装到系统
+	- 推荐方式：https://github.com/FiloSottile/mkcert
+		- `mkcert xx.com 192.168.0.1 localhost 127.0.0.1` 生成证书`xx.pem`, 私钥 `xx-key.pem`
+			- `xx+n.pem`，+n是只出了xx这个域名，还有n个
+		- `mkcert -install`  `mkcert -uninstall`
+			- 自动用当前目录下的证书进行安装、卸载
+			- 支持win、linux、mac等
