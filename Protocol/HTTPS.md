@@ -9,3 +9,4 @@
 		- `mkcert -install`  `mkcert -uninstall`
 			- 自动用当前目录下的证书进行安装、卸载
 			- 支持win、linux、mac等
+			- 安装完后需要刷新页面或者重新打开浏览器
