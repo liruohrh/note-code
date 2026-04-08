@@ -11,7 +11,110 @@
 		- 如果设置了OPENCLAW_HOEM，最好设置OPENCLAW_STATE_DIR，因为openclaw有时候不遵循OPENCLAW_HOEM，比如gateway服务的脚本路径 `~/.openclaw/gateway.cmd`
 	- `OPENCLAW_CONFIG_PATH`：配置文件`~/.openclaw/openclaw.json`，遵循OPENCLAW_HOEM
 - WebUI：`http://127.0.0.1:{gateway.port:18789}/#token={token}`
-## 常见配置需求
+# 常见配置需求
+
+# Channel
+- 模型的处理速度会很大程度上影响回复速度，比如`nvidia/deepseek-ai/deepseek-v3.2`，几分钟后才回复
+
+# Model
+- 需要配置models（模型配置）、agents（智能体配置，比如聊天界面、默认智能体）
+	- model引用格式：`{provider}/{modelId}`，如`nvidia/deepseek-ai/deepseek-v3.2`
+	- models配置会被缓存到`.openclaw\agents\main\agent\models.json`（有时候没有正确同步，比如删除无用的）
+- cost：token美元计费，免费推荐都设置为0（仅显示token消耗）
+```json
+{
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "deepseek": {
+        "baseUrl": "https://api.deepseek.com",
+        "apiKey": "sk-xxxxxx",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "deepseek-chat",
+            "name": "DeepSeek Chat",
+            "api": "openai-completions",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": {
+              "input": 0.28,
+              "output": 0.42,
+              "cacheRead": 0.028,
+              "cacheWrite": 0
+            },
+            "contextWindow": 131072,
+            "maxTokens": 8192,
+            "compat": {
+              "supportsUsageInStreaming": true
+            }
+          },
+          {
+            "id": "deepseek-reasoner",
+            "name": "DeepSeek Reasoner",
+            "api": "openai-completions",
+            "reasoning": true,
+            "input": ["text"],
+            "cost": {
+              "input": 0.28,
+              "output": 0.42,
+              "cacheRead": 0.028,
+              "cacheWrite": 0
+            },
+            "contextWindow": 131072,
+            "maxTokens": 65536,
+            "compat": {
+              "supportsUsageInStreaming": true
+            }
+          }
+        ]
+      },
+      "nvidia": {
+        "baseUrl": "https://integrate.api.nvidia.com/v1",
+        "apiKey": "nvapi-xxxxx",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "deepseek-ai/deepseek-v3.2",
+            "name": "Nvidia Deepseek-v3.2",
+            "api": "openai-completions",
+            "reasoning": false,
+            "input": ["text"],
+            "contextWindow": 131072,
+            "maxTokens": 4096,
+            "compat": {
+              "supportsUsageInStreaming": true
+            }
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "nvidia/deepseek-ai/deepseek-v3.2"
+      },
+      "models": {
+        "deepseek/deepseek-chat": {
+          "alias": "DeepSeek"
+        },
+        "deepseek/deepseek-reasoner": {
+          "alias": "DeepSeek Reasoner"
+        },
+        "nvidia/deepseek-ai/deepseek-v3.2": {
+          "alias": "Nvidia Deepseek-v3.2"
+        }
+      },
+      "workspace": "F:\\data\\.openclaw\\workspace",
+      "compaction": {
+        "mode": "safeguard"
+      }
+    }
+  }
+}
+
+```
 
 ## 仅本机
 ```json
