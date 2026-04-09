@@ -10,3 +10,10 @@
 			- 自动用当前目录下的证书进行安装、卸载
 			- 支持win、linux、mac等
 			- 安装完后需要刷新页面或者重新打开浏览器
+		- `mkcert -CAROOT`
+			- 输出本机生成的CA证书以及私钥的目录路径
+		- `CAROOT=/path` 指定CA证书以及私钥的生成路径
+			- windows：默认`%LOCALAPPDATA%\mkcert`
+		- 如：windows上，CA是 `mkcert {host}\{username}@{host}`，签发的证书是`{host}\{username}@{host}`
+- windows证书问题
+	- 直接改名为`xxx.crt`点击安装可能不会导入到 "受信任的根证书颁发机构"，比如会在"中间证书颁发机构"

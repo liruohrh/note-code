@@ -149,17 +149,30 @@
     },
     "tls": {
       "enabled": true,
-      "certPath": "F:\\data\\.openclaw\\openclaw.pem",
-      "keyPath": "F:\\data\\.openclaw\\openclaw.key.pem"
+      "autoGenerate": true, 
+      "caPath": "F:\\data\\.openclaw\\openclaw.ca.crt",
+      "certPath": "F:\\data\\.openclaw\\openclaw.crt",
+      "keyPath": "F:\\data\\.openclaw\\openclaw.key"
     }
   }
 }
 ```
 
-
+- autoGenerate：自动生成
+	- 或者用`https://github.com/FiloSottile/mkcert`，生成+自动安装根证书
+	- 需要安装openssl
+	- 默认生成路径为`gateway\tls`，注意，不会生成caPath
+- 如果想不显示证书不可信或者用TUI：安装caPath
+	- TUI的nodejs会进行校验，如果不安装，需要设置环境变量`NODE_TLS_REJECT_UNAUTHORIZED=0`
 # 问题
 
 ## “HTTP 401: Authentication Fails, Your api key: *** is invalid”
 - 解决方法：删除`.openclaw\agents\main\agent\auth-profiles.json`
 - 从解决401来看，OpenClaw目前在配置修改功能上有很大问题，提供多种配置方式，同时又将配置拆分到不同持久化位置，且同步机制没有做好
 - openclaw.json中也包含了auth.profiles，不知道是不是同一个东西，删除后重新运行gateway没有再创建这个auth-profiles.json
+- `.openclaw\agents\main\agent\models.json` 也有
+- 好像是初始化程序+配置优先级问题，最好删了，只用 openclaw.json
+- 优先级：
+	- `agents/main/agent/models.json`
+	- `agents/main/agent/auth-profiles.json`
+	- `openclaw.json``
