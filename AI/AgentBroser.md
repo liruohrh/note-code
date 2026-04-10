@@ -1,0 +1,4 @@
+- https://github.com/vercel-labs/agent-browser
+	- 更快，消耗token更少
+- https://github.com/browser-use/browser-use
+	- 分析、编写更强
