@@ -5,17 +5,17 @@
 
 
 
-|                        | [playwright-cli](https://github.com/microsoft/playwright) | [browser-agent](https://github.com/browser-use/browser-use) | [agent-browser](https://github.com/vercel-labs/agent-browser) | [Avenir-Web](https://github.com/Princeton-AI2-Lab/Avenir-Web) |
-| ---------------------- | --------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| 元素操作方式                 | DOM清洗                                                     | DOM清洗                                                       | DOM清洗                                                         | 文本+状态+视觉                                                      |
-| 指定用户数据目录               | ✅--profile                                                | ❌                                                           | ✅--profile                                                    |                                                               |
-| 指定会话（浏览器会话，用于多开时指定浏览器） | ✅--s                                                      | ✅--session                                                  | ✅--session                                                    |                                                               |
-| 指定浏览器可执行路径             | ❌                                                         | ❌                                                           | ❌                                                             |                                                               |
-| 默认系统浏览器                | ✅                                                         | ✅                                                           | ✅                                                             |                                                               |
-|                        |                                                           |                                                             |                                                               |                                                               |
-|                        |                                                           |                                                             |                                                               |                                                               |
-|                        |                                                           |                                                             |                                                               |                                                               |
-|                        |                                                           |                                                             |                                                               |                                                               |
+|                        | [playwright-cli](https://github.com/microsoft/playwright) | [browser-agent](https://github.com/browser-use/browser-use) | [agent-browser](https://github.com/vercel-labs/agent-browser) | [Avenir-Web](https://github.com/Princeton-AI2-Lab/Avenir-Web) | [opencli](https://github.com/jackwener/opencli) |
+| ---------------------- | --------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ----------------------------------------------- |
+| 元素操作方式                 | DOM清洗                                                     | DOM清洗                                                       | DOM清洗                                                         | 文本+状态+视觉                                                      |                                                 |
+| 指定用户数据目录               | ✅--profile                                                | ❌                                                           | ✅--profile                                                    |                                                               |                                                 |
+| 指定会话（浏览器会话，用于多开时指定浏览器） | ✅--s                                                      | ✅--session                                                  | ✅--session                                                    |                                                               |                                                 |
+| 指定浏览器可执行路径             | ❌                                                         | ❌                                                           | ❌                                                             |                                                               |                                                 |
+| 默认系统浏览器                | ✅                                                         | ✅                                                           | ✅                                                             |                                                               |                                                 |
+|                        |                                                           |                                                             |                                                               |                                                               |                                                 |
+|                        |                                                           |                                                             |                                                               |                                                               |                                                 |
+|                        |                                                           |                                                             |                                                               |                                                               |                                                 |
+|                        |                                                           |                                                             |                                                               |                                                               |                                                 |
 
 # 其他
 - session：浏览器会话，就和双击运行一个浏览器一样，用来标识正在运行的浏览器，无其他作用
@@ -42,6 +42,6 @@
 - 怎么找的？文本或者语义化图片
 - 找到后，元素定位
 	- id
-	- 一些accessibility属性
+	- 一些accessibility属性或者一些特殊属性
 	- class（可能最多找3个父级的定位）
 	- 最后才是文本
