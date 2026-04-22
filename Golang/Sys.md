@@ -28,3 +28,6 @@ fmt.Printf("exit with %v", <-signalChan)
 	- windows：exit status 1
 	- unix：发送SIGKILL
 	- 如果是cmd.Process，则command.Run会返回exec.ExitError（可以获取进程信息，错误信息）
+	- 当然可以选择自己发送信号，如`process.Signal(syscall.SIGTERM)`
+		- 还可以`process.Wait`
+		- 但如果发送SIGKILL会立刻杀死进程，且不等待
