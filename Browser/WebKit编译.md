@@ -2,39 +2,22 @@
 
 - 分支
   - safari-7624.1.16.11-branch：Apple Safari 对应版本的 release branch（冻结主线 + 维护分支）
-
 - tag
-
   - Safari-533.10
-
     - Safari浏览器
-
   - WebKit-7613.2.6
-
     - WebKit引擎
-
   - releases/Apple/Safari-10-iOS-10.0、releases/Apple/Safari-8.0.8-macOS-10.10.5
-
     - Apple 官方 release snapshot（绑定 OS + Safari 版本的源码快照）
-
   - releases/Apple/Safari-Technology-Preview-144
-
     - 新特色实验渠道
-
   - webkitgtk-2.36.4
-
     - GTK port版本、Linux 桌面浏览器（Epiphany 等）、嵌入式 GTK 应用
-
   - wpewebkit-2.44.4
-
     - WPE（嵌入式）版本、Smart TV、车载系统、IoT 浏览器
-
     - 📌 和 GTK 的关系：
-
       - 共用 WebKit core
-
       - 不同 UI backend（Wayland / 嵌入式设备）
-
 # 环境
 
 - git clone --depth 1 --branch WebKit-7624.1.16.11.4 https://github.com/webKit/webkit
@@ -95,6 +78,9 @@ choco install -y cmake --version 3.27.9
 choco install -y llvm --version 20.1.0
 python -m pip install pywin32
 git config --global core.autocrlf input
+
+git clone https://github.com/microsoft/vcpkg
+set VCPKG_ROOT="$PWD\vcpkg"
 ```
 
 - 最终构建脚本：没有改环境之类的东西，只是增加了快速编译的脚本
