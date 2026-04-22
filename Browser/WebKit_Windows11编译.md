@@ -1,4 +1,9 @@
-# WebKit
+# 远程调试页面和自动化
+
+`set BUILD_WEBKIT_ARGS="-DENABLE_REMOTE_INSPECTOR=ON -DENABLE_WEBDRIVER=ON"`
+- 仍然无法打开远程调试页面
+
+# WebKit 版本信息
 
 - 分支
   - safari-7624.1.16.11-branch：Apple Safari 对应版本的 release branch（冻结主线 + 维护分支）

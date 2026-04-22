@@ -3,7 +3,8 @@
 - 优雅关闭，监听SIGINT（ctrl+c，键盘中断）、SIGTERM（`kill -15 pid`默认，优雅终止）、SIGKILL（`kill -9 pid`默认，强制杀死）
 
 - GoLand、Jetbrains产品的测试好像都是SIGKILL，导致程序无法接收信号，只能自己找到pid进行SIGTERM
-	- main则是发生SIGINT。
+	- main则是发生SIGINT
+	- unix 则都是SIGINT
 
 ```go
 signalChan := make(chan os.Signal, 1)  
@@ -23,3 +24,7 @@ fmt.Printf("exit with %v", <-signalChan)
 	- 监听windows版的SIGTERM：  NotifyOnQuit（返回bool）、SimulateSigTermOnQuit（返回Signal.SIGTERM）
 	- 发送windows版的SIGTERM：
 		- `RequestQuit(pid)`发送 `WM_CLOSE` 消息，发完就返回，不等待`QuitProcess(pid, duration)`发送 `WM_CLOSE`，等待进程退出，超时则强杀
+- `os.Process#Kill`
+	- windows：exit status 1
+	- unix：发送SIGKILL
+	- 如果是cmd.Process，则command.Run会返回exec.ExitError（可以获取进程信息，错误信息）
