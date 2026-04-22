@@ -77,23 +77,27 @@
 - vswhere 3.1.7
 - XAMPP-81 8.1.6
 - ninja 1.13.2
-- Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35214 for x64
+- VS2022 Desktop development with C++, Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35214 for x64
 - vcpkg master 296b89248a 2026-4-16
 
 
-
 - 主要改动了以下环境
-
   - cmake 3.27.9
-
   - llvm 20.1.0
-
   - main 2874cfdad914 2026-4-21最新版
     - 其实webkit_5e02fd1 2026-4-15也能编译，只是需要上面的修改环境
     - 但是WebKit-7624.1.16.11.4 2026-3-4不能编译
 
-- 最终脚本：没有改环境之类的东西，只是增加了快速编译的脚本
+- 环境脚本
+```bash
+choco install -y xampp-81 python311 ruby git gperf ninja ^
+  cmake --version=3.27.9 ^
+  llvm --version=20.1.0
+python -m pip install pywin32
+git config --global core.autocrlf input
+```
 
+- 最终构建脚本：没有改环境之类的东西，只是增加了快速编译的脚本
 ```bash
 @echo off
 cd %~dp0
