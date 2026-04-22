@@ -90,9 +90,7 @@
 
 - 环境脚本
 ```bash
-choco install -y xampp-81 python311 ruby git gperf ninja ^
-  cmake --version=3.27.9 ^
-  llvm --version=20.1.0
+choco install -y xampp-81 python311 ruby git cmake gperf llvm ninja
 python -m pip install pywin32
 git config --global core.autocrlf input
 ```
