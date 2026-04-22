@@ -16,6 +16,8 @@
 
 ## winsw
 - 时间+大小轮转实现有bug，必须在设定时间后才会轮转，推荐仅用时间轮转
+- 如果依赖其他服务，要设置depend，除非服务会尝试一定时间的自动重试
+- 启动时，可能读取到错误的时间（好像只是0点），可以尝试设置delayedAutoStart，或者尝试程序手动一定延时
 
 ```xml
 <service>
@@ -28,6 +30,9 @@
     <executable>D:\path\app.exe</executable>
     <workingdirectory>D:\ws</workingdirectory>
     <stoptimeout>30 sec</stoptimeout>
+    
+    <delayedAutoStart>true</delayedAutoStart>  
+	<depend>mysql</depend>
 
     <!-- 输出日志配置 -->
     <logpath>D:\path\logs\std</logpath>

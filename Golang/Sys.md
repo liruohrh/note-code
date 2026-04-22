@@ -1,0 +1,25 @@
+# Signal
+
+- 优雅关闭，监听SIGINT（ctrl+c，键盘中断）、SIGTERM（`kill -15 pid`默认，优雅终止）、SIGKILL（`kill -9 pid`默认，强制杀死）
+
+- GoLand、Jetbrains产品的测试好像都是SIGKILL，导致程序无法接收信号，只能自己找到pid进行SIGTERM
+	- main则是发生SIGINT。
+
+```go
+signalChan := make(chan os.Signal, 1)  
+signal.Notify(signalChan,  
+    syscall.SIGINT,  
+    syscall.SIGKILL,  
+    syscall.SIGTERM, 
+)  
+fmt.Printf("exit with %v", <-signalChan)
+```
+
+
+- windows上 `taskkill /pid xxx`无法被signal监听
+	- `taskkill /pid`发送 `WM_CLOSE` 给窗口 无窗口，收不到
+	- `taskkill /f /pid`调用 `TerminateProcess()` 强杀，无法处理
+- 用库`github.com/containers/winquit`兼容
+	- 监听windows版的SIGTERM：  NotifyOnQuit（返回bool）、SimulateSigTermOnQuit（返回Signal.SIGTERM）
+	- 发送windows版的SIGTERM：
+		- `RequestQuit(pid)`发送 `WM_CLOSE` 消息，发完就返回，不等待`QuitProcess(pid, duration)`发送 `WM_CLOSE`，等待进程退出，超时则强杀

@@ -18,3 +18,14 @@
 - https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter
 	- 被取代为： https://inspect.dev/
 	- 接替者开源仓库： https://github.com/HimbeersaftLP/ios-safari-remote-debug-kit
+
+
+- Web Inspector
+	- 参考
+		- Source/WebKit/glib/remote-inspector.md.in
+	- Client: 
+		- `WEBKIT_INSPECTOR_SERVER=192.168.0.50:5000 MiniBrowser --enable-developer-extras=true https://wpewebkit.org` 
+			- 或者设置WEBKIT_INSPECTOR_HTTP_SERVER
+	- Client: 
+		- `MiniBrowser inspector://192.168.0.50:5000` 
+		- `http://192.168.0.50:5000`
