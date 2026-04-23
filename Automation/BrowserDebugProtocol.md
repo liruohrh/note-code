@@ -15,6 +15,7 @@
 	- 使用方式好像类似于chromium：`http://localhost:8080/Main.html?ws=localhost:9222/devtools/page/1`
 - https://github.com/artygus/webkit-webinspector
 	- 封装了一点点东西
+	- 好像是不能直接用WebInspectorUI，要一些处理
 - https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter
 	- 被取代为： https://inspect.dev/
 	- 接替者开源仓库： https://github.com/HimbeersaftLP/ios-safari-remote-debug-kit
@@ -24,8 +25,8 @@
 	- 参考
 		- Source/WebKit/glib/remote-inspector.md.in
 	- Client: 
-		- `WEBKIT_INSPECTOR_SERVER=192.168.0.50:5000 MiniBrowser --enable-developer-extras=true https://wpewebkit.org` 
-			- 或者设置WEBKIT_INSPECTOR_HTTP_SERVER
+		- `WEBKIT_INSPECTOR_SERVER=127.0.0.1:9222 MiniBrowser --enable-developer-extras=true https://wpewebkit.org` 
+			- 或者设置 `WEBKIT_INSPECTOR_HTTP_SERVER=127.0.0.1:9222`
 	- Client: 
-		- `MiniBrowser inspector://192.168.0.50:5000` 
-		- `http://192.168.0.50:5000`
+		- `MiniBrowser inspector://127.0.0.1:9222` 
+		- `http://127.0.0.1:9222`

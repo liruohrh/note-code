@@ -1,7 +1,7 @@
 # 远程调试页面和自动化
 
-`set BUILD_WEBKIT_ARGS="-DENABLE_REMOTE_INSPECTOR=ON -DENABLE_WEBDRIVER=ON"`
-- 仍然无法打开远程调试页面
+- Tools/Scripts/build-webkit是默认开启的，除非传递参数`--no-experimental-features`
+	- 不需要自己在 `/CMakeLists.txt`加入`option(ENABLE_EXPERIMENTAL_FEATURES "Enable experimental features" ON)`
 
 # WebKit 版本信息
 
@@ -72,6 +72,7 @@
 - 主要改动了以下环境
   - cmake 3.27.9
   - llvm 20.1.0
+  - 开启Windows长路径
   - main 2874cfdad914 2026-4-21最新版
     - 其实webkit_5e02fd1 2026-4-15也能编译，只是需要上面的修改环境
     - 但是WebKit-7624.1.16.11.4 2026-3-4不能编译
