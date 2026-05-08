@@ -1,4 +1,6 @@
 # clipboard
+- 比较新的都要求必须用https
+	- 否则需要手动打开 chrome://flags 页面，搜索 unsafely-treat-insecure-origin-as-secure，设置为 enable。
 
 ```js
       (async () => {
