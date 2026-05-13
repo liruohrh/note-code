@@ -1,0 +1,2 @@
+- 自定义重命名会话，`/rename` 后退出，在`~/.claude` 全局搜索 刚才的名称进行替换为自定义的即可，然后再打开claude `/resume` 里就可以看见自定义会话名了
+	- 或者只需要替换`projects\{projectPath}` 里的

@@ -1,0 +1,2 @@
+- https://github.com/mattpocock/skills
+- https://github.com/forrestchang/andrej-karpathy-skills
