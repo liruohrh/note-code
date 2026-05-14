@@ -1,3 +1,5 @@
+# 修改注意事项
+- 注意上下文，配置应该保存到`WebsiteDataStore`（一个BrowserContext的数据）
 
 
 # 添加补丁

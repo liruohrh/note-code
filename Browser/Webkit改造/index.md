@@ -1,11 +1,18 @@
 - https://webkit.org/contributing-code/
 
+# 环境
+- 参考 [WebKit_Windows11编译](../WebKit_Windows11编译)
+- 并修改环境
+	- cmake 3.29.9（3.29即可），解决cmake生成后手动ninja无法编译的问题（参考 [增量编译](#增量编译)）
+
 # 编译控制
 - cmake是构建文件生成器，WebKit通常用Ninja，在windows上则是 使用cl的兼容版clang-cl
 - 编译步骤
 	- 生成：`perl Tools/Scripts/build-webkit --release --generate-project-only --use-ccache`
+		- use-ccache开启后编译速度才极度提升，仅编译部分修改文件+连接对应的部分库和可执行文件
 	- 编译：`ninja -C WebKitBuild/Release -j 4`
-		- 最大并发编译
+		- -j：最大并发编译
+		- -C：指定编译路径，必须含build.ninja
 	- 如果不需要控制ninja
 		- `perl Tools/Scripts/build-webkit --release --use-ccache`
 
@@ -37,6 +44,13 @@
 		1. `set(CMAKE_NINJA_DEPTYPE msvc)` ❌
 		2. `set CLANG_CL=-fmsc-version=19.44`❌
 		3. `ninja -d keeprsp -C WebKitBuild\Release`❌
+	- 有时候删了.ninja_deps就可以，有时候有.ninja_deps也可以
+	- 参考
+		- https://github.com/ninja-build/ninja/issues/2280
+		- https://gitlab.kitware.com/cmake/cmake/-/work_items/25753
+	- 解决
+		- `ninja -C WebKitBuild/Release -t deps`：里面是 `Note: including file: {filepath}` 这种诡异的内容
+		- 参考cmake参考的issue，升级到3.29即可（注意删除build.ninja、.ninja_deps再重新执行生成命令）
 
 ```bash
 # 默认就是根据.ninja_log增量编译
