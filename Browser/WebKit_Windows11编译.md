@@ -67,6 +67,7 @@
 - ninja 1.13.2
 - VS2022 Desktop development with C++, Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35214 for x64
 - vcpkg master 296b89248a 2026-4-16
+	- 用VS环境里的也行（忘记为什么要自己下载来着了）
 
 
 - 主要改动了以下环境
