@@ -7,6 +7,8 @@
 - 查看库的构建信息：`buildtrees\{port}`
 
 # 替换别人的仓库配置
+- vcpkg-configuration.json的 overlay-ports 或者 overlay-triplets
+
 
 # 配置
 - 在cmake里使用，设置变量`CMAKE_TOOLCHAIN_FILE=$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake`
