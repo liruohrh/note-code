@@ -7,6 +7,10 @@
 	- build
 	  - `cmake --build --preset default`
 	  - `cmake --build --preset default --target hello_play`
+- CMAKE_CXX_FLAGS
+	- "-W" 忽视所有警告
+	- "-Wno-switch"
+	- 不知道为什么，这个变量无效，不知道怎么忽视warning
 
 # 配置文件
 

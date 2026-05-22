@@ -1,5 +1,44 @@
 - https://webkit.org/contributing-code/
 
+# 标准输出标准错误
+
+- 重新分配
+```c++
+
+// 分配Console，且将标准输出和标准错误重定向到该窗口
+// 该console将输出所有进程的标准输出和错误
+AllocConsole();
+freopen("CONOUT$", "w", stderr);
+freopen("CONOUT$", "w", stdout);
+```
+
+- 重定向
+```c++
+// 不能用AllocConsole，否则标准输出和错误无法重定向
+// 只能重定向当前进程，特殊情况如在Source\WebCore\page\Navigator.cpp就没办法，只能AllocConsole来查看终端
+class FileStreamBuf : public std::streambuf {
+public:
+    FileStreamBuf(FILE* f) : m_file(f) {}
+protected:
+    int overflow(int c) override {
+        if (c != EOF) fputc(c, m_file);
+        return c;
+    }
+    std::streamsize xsputn(const char* s, std::streamsize n) override {
+        fwrite(s, 1, n, m_file);
+        return n;
+    }
+private:
+    FILE* m_file;
+};
+
+// 初始化时调用
+void redirectToLog(FILE* logFile) {
+    static FileStreamBuf buf(logFile);
+    std::cerr.rdbuf(&buf);
+    std::cout.rdbuf(&buf);
+}
+```
 # 环境
 - 参考 [WebKit_Windows11编译](../WebKit_Windows11编译)
 - 并修改环境
@@ -23,6 +62,10 @@
 	- 可能会有错误：Tools\MiniBrowser\win\CMakeFiles\MiniBrowser.dir\MiniBrowserLib.rc.res Tools\MiniBrowser\win\CMakeFiles\MiniBrowser.dir\MiniBrowserLib.rc.res.pp
 - 编译 Playwright：`Tools\PlatformWin.cmake` ， ENABLE_WEBKIT，即默认on
 	- 也是在此处判断ENABLE_MINIBROWSER
+
+
+## 修改注意事项
+- 尽可能不要修改代码生成部分，一旦修改将重新编译大量文件（可能有900多）
 
 # Clang LSP
 

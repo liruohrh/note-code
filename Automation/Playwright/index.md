@@ -18,3 +18,9 @@
 
 - 对于userdatadir（其实最好还是不要用这个，推荐完全无状态的，通过StorageState、AddCookies来管理状态）
 	- 不会立即让浏览器进行刷盘（即cookie可能会丢失），不过通过页面加载可让浏览器触发刷盘机制
+
+
+
+# userAgent
+
+- 如在packages\playwright-core\src\server\webkit\wkBrowser.ts里有DEFAULT_USER_AGENT
