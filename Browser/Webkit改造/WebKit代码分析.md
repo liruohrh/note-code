@@ -211,9 +211,9 @@ Source\WebCore\page\Navigator.idl
 			- 其实这个settings和preferences是一个意思，比如在Source\WebKit\WebProcess\WebPage\WebPage.cpp，WebPage::updatePreferences，就会复制prefeerences
 		- `downcast<Document>(jsCast<JSDOMGlobalObject*>(globalObject())->scriptExecutionContext())->quirks().needsNavigatorUserAgentDataQuirk())``
 			- `[EnabledByQuirk=needsNavigatorUserAgentData]`
-		- 即要https
+		- 即要SecureContext
 			- settings.navigatorUserAgentDataJavaScriptAPIEnabled：设置Source\WTF\Scripts\Preferences\UnifiedWebPreferences.yaml中设置NavigatorUserAgentDataJavaScriptAPIEnabled中的webcore为true
-				- 或者简单点在Source\WebKit\UIProcess\API\C\WKPreferences.cpp中，WebPreferences::setNavigatorUserAgentDataJavaScriptAPIEnabled
+				- 或者简单点在Source\WebKit\UIProcess\API\C\WKPreferences.cpp中，添加WebPreferences::setNavigatorUserAgentDataJavaScriptAPIEnabled，并在app里调用
 			- quirks.needsNavigatorUserAgentDataQuirk：在Source\WebCore\page\Quirks.cpp添加域名handler 启用 NeedsNavigatorUserAgentData，或者直接设置Quirks#needsNavigatorUserAgentDataQuirk返回true
 
 
@@ -371,3 +371,35 @@ add_compile_definitions(ENABLE_RELEASE_LOG=1)
 ```
 
 `OutputDebugString` 输出到 Windows 调试器（Visual Studio Output 窗口 / DebugView 工具）。更完整的方案是用 **ETW（Event Tracing for Windows）**，类似 `os_log` 的结构化日志，但实现复杂得多。
+
+
+
+# 进程关系和启动
+- 类似点
+	- 进程：XXXProcess
+	- 客户端控制Process的类：XXXProcessProxy类
+	- XXXCreationParameters.h、XXXCreationParameters.serialization.in：进程IPC  initialize的参数
+	- 每个进程相关的类都继承AuxiliaryProcess，通用的可以放在此处
+- Source\WebKit\UIProcess\AuxiliaryProcessProxy.cpp
+	- 一创建立刻connect、**initialize**（使用创建参数调用初始化IPC））
+- Source\WebKit\Shared\AuxiliaryProcess.cpp
+- **Source\WebKit\Shared\AuxiliaryProcessCreationParameters.h**
+- Source\WebKit\Shared\AuxiliaryProcessCreationParameters.serialization.in
+- Source\WebKit\Shared\AuxiliaryProcessMain.h
+	- 主程序，直接
+		- platformInitialize
+		- parseCommandLine
+		- InitializeWebKit2
+		- initializeAuxiliaryProcess
+		- run
+		- platformFinalize
+	- 平台覆盖，如Source\WebKit\Shared\win\AuxiliaryProcessMainWin.cpp
+	- 各进程不同平台有不同实现，如
+		- Source\WebKit\NetworkProcess\NetworkProcessMain.h
+		  - Source\WebKit\NetworkProcess\EntryPoint\win\NetworkProcessMain.cpp
+		  - Source\WebKit\NetworkProcess\curl\NetworkProcessMainCurl.cpp
+		  - `AuxiliaryProcessMain<NetworkProcessMainCurl>(argc, argv)`
+		- Source\WebKit\WebProcess\EntryPoint\win\WebProcessMain.cpp
+		  - Source\WebKit\WebProcess\win\WebProcessMainWin.cpp
+		  - `AuxiliaryProcessMain<WebProcessMainWin>(argc, argv)`
+		- 
