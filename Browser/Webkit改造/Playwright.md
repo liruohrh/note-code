@@ -1,3 +1,16 @@
+# 源码分析
+
+- pageConfiguration：这个是在Tools/Playwright里创建，然后通过IPC共享的
+- MainWindow
+	- 设置pageConfiguration，且创建新的prefs
+		- 因此注意pageConfiguration可以只设置一次，但是prefs必须每次都设置
+		- 或者在Source\WebKit\UIProcess\WebPreferences.cpp WebPreferences::createWithLegacyDefaults中设置默认的prefs（更推荐，但如果有很多外在因素被覆盖）
+			- 但其实最方便的方法是在设置处禁止设置自己配置的prefs，那些更新通知可以不用管
+	- 在哪里会new：
+		- ui new window
+		- inspector的页面创建，调用WebKitBrowserWindow::createPageCallback
+
+
 # 修改注意事项
 - 注意上下文，配置应该保存到`WebsiteDataStore`（一个BrowserContext的数据）
 

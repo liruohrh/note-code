@@ -50,7 +50,7 @@ ProcessPoolConfiguration   ← 进程池级别（WebProcess 管理策略）
 
 ## 各类职责
 
-### 1. `API::ProcessPoolConfiguration` [1](#0-0) 
+### 1. `API::ProcessPoolConfiguration`
 
 **作用：** 控制 `WebProcessPool`（Web 进程池）的行为，是**进程管理层**的配置。
 
@@ -65,11 +65,11 @@ ProcessPoolConfiguration   ← 进程池级别（WebProcess 管理策略）
 
 ---
 
-### 2. `API::PageConfiguration` [2](#0-1) 
+### 2. `API::PageConfiguration`
 
 **作用：** 创建单个 `WKWebView`/`WebPageProxy` 时的**静态配置**，是最常用的配置入口。
 
-它聚合了其他对象的引用： [3](#0-2) 
+它聚合了其他对象的引用：
 
 关键字段：
 - `processPool` — 使用哪个进程池
@@ -82,7 +82,7 @@ ProcessPoolConfiguration   ← 进程池级别（WebProcess 管理策略）
 
 ---
 
-### 3. `WebsiteDataStore` [4](#0-3) 
+### 3. `WebsiteDataStore`
 
 **作用：** 这不是一个"配置类"，而是一个**运行时数据管理对象**，对应一个浏览 session。
 
@@ -90,13 +90,13 @@ ProcessPoolConfiguration   ← 进程池级别（WebProcess 管理策略）
 - Cookies、LocalStorage、IndexedDB、Cache、ServiceWorker 注册等
 - 隐私保护（ITP/Tracking Prevention）
 - 数据的增删查（`fetchData`、`removeData`）
-- 对应一个 `PAL::SessionID`（persistent 或 ephemeral） [5](#0-4) 
+- 对应一个 `PAL::SessionID`（persistent 或 ephemeral）
 
 **使用时机：** 通过 `PageConfiguration::setWebsiteDataStore()` 关联到页面。多个 WebView 可以共享同一个 `WebsiteDataStore`（共享 session）。
 
 ---
 
-### 4. `WebsitePoliciesData` [6](#0-5) 
+### 4. `WebsitePoliciesData` 
 
 **作用：** 这是**每次导航时动态下发给 WebProcess 的策略**，不是创建时的配置。
 
@@ -213,7 +213,7 @@ Source\WebCore\page\Navigator.idl
 			- `[EnabledByQuirk=needsNavigatorUserAgentData]`
 		- 即要SecureContext
 			- settings.navigatorUserAgentDataJavaScriptAPIEnabled：设置Source\WTF\Scripts\Preferences\UnifiedWebPreferences.yaml中设置NavigatorUserAgentDataJavaScriptAPIEnabled中的webcore为true
-				- 或者简单点在Source\WebKit\UIProcess\API\C\WKPreferences.cpp中，添加WebPreferences::setNavigatorUserAgentDataJavaScriptAPIEnabled，并在app里调用
+				- 或者简单点在Source\WebKit\UIProcess\API\C\WKPreferences.cpp中，添加WebPreferences::setNavigatorUserAgentDataJavaScriptAPIEnabled的函数，并在app里调用
 			- quirks.needsNavigatorUserAgentDataQuirk：在Source\WebCore\page\Quirks.cpp添加域名handler 启用 NeedsNavigatorUserAgentData，或者直接设置Quirks#needsNavigatorUserAgentDataQuirk返回true
 
 
