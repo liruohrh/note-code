@@ -1,0 +1,53 @@
+site_name: 李若的代码笔记
+site_description: 李若（liruohrh）的代码笔记，涵盖编程语言、框架、工具等方面的知识点和实践经验。
+site_url: https://liruohrh.github.io/note-code/
+
+docs_dir: docs # Markdown 文件所在目录，按需修改
+
+theme:
+  name: material
+  language: zh
+  palette:
+    # 亮色模式
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切换到暗色模式
+    # 暗色模式
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到亮色模式
+  features:
+    - navigation.tabs # 顶部标签导航
+    - navigation.sections # 侧边栏分组
+    - navigation.expand # 自动展开当前节
+    - navigation.top # 返回顶部按钮
+    - navigation.footer # 上/下一页导航
+    - search.highlight # 搜索高亮
+    - search.suggest # 搜索建议
+    - content.code.copy # 代码块一键复制
+    - toc.follow # 目录跟随滚动
+
+plugins:
+  - search:
+      lang: zh
+  - glightbox # 图片灯箱效果
+
+markdown_extensions:
+  - admonition # 提示块 (note/warning/tip 等)
+  - pymdownx.details # 折叠块
+  - pymdownx.superfences # 代码块增强 + Mermaid 图表
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.tabbed:
+      alternate_style: true # 内容标签页
+  - pymdownx.tasklist:
+      custom_checkbox: true # 美化任务列表
+  - tables
+  - toc:
+      permalink: true # 标题锚点链接
