@@ -229,3 +229,28 @@ int main(int argc, char** argv)
 3. **进程间通信**：`Shared/` 下的结构体通过 IPC 序列化框架跨进程传递（`*.serialization.in` 文件描述序列化格式）。类型支持由 IPC 编解码器自动生成。
 
 4. **统一构建**：所有 `.cpp` 文件在 `Sources.txt` 中列出，默认分组到 unified source 中编译（`@no-unify` 标记例外）。
+
+
+
+## API
+- Source\WebKit\UIProcess\API\APIPageConfiguration.h
+	- include
+		- 本模块：`"BrowsingContextGroup.h"` Source\WebKit\UIProcess\BrowsingContextGroup.h
+		- Shared：`"WebPreferencesDefaultValues.h"` Source\WebKit\Shared\WebPreferencesDefaultValues.h
+		- Shared API：`"APIObject.h"` Source\WebKit\Shared\API\APIObject.h
+		- WebCore：`<WebCore/ContentSecurityPolicy.h>`  
+			- Source\WebCore\page/csp/ContentSecurityPolicy.h
+			- WebKitBuild\Release\WebCore\PrivateHeaders\ WebCore\ContentSecurityPolicy.h
+	- 被include处
+		- 本模块：Source\WebKit\UIProcess\WebPreferences.cpp
+		- 本模块导出的API：Source\WebKit\UIProcess\API\C\WKPage.cpp
+- Source\WebKit\Shared\AuxiliaryProcess.cpp
+	- include
+		- Platform：`"Logging.h"` Source\WebKit\Platform\Logging.h
+		- Shared：`"ContentWorldShared.h"` Source\WebKit\Shared\ContentWorldShared.h
+		- UIProcess：`"WebPageProxyIdentifier.h"`Source\WebKit\UIProcess\WebPageProxyIdentifier.h
+- include规则，比如WebKit
+	- WebKit里的文件只能include WebKit_PRIVATE_INCLUDE_DIRECTORIES，而公开文件只能include 同样是公开文件（在WebKitBuild/Release/WebKit/Headers/WebKit里）
+- WebKit_PRIVATE_INCLUDE_DIRECTORIES
+	- Source/cmake/WebKitMacros.cmake:354里的`_WEBKIT_TARGET_SETUP`宏
+	- `WebKit_PRIVATE_INCLUDE_DIRECTORIES = target_include_directories(WebKit PRIVATE "$<BUILD_INTERFACE:${WebKit_PRIVATE_INCLUDE_DIRECTORIES}>")`

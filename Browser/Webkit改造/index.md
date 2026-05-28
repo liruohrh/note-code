@@ -64,8 +64,9 @@ void redirectToLog(FILE* logFile) {
 	- 也是在此处判断ENABLE_MINIBROWSER
 
 
-## 修改注意事项
-- 尽可能不要修改代码生成部分，一旦修改将重新编译大量文件（可能有900多）
+## Unifile编译
+- 尽可能不要修改代码生成部分，一旦修改将重新编译大量文件
+- 如果是自己的文件，则在CMakeLists处在文件后加 `@no-unify`
 
 # Clang LSP
 
