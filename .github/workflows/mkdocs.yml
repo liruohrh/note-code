@@ -36,28 +36,16 @@ jobs:
           key: ${{ runner.os }}-pip-mkdocs-material
 
       - name: Install dependencies
-        run: pip install mkdocs-material mkdocs-glightbox
+        run: pip install mkdocs-material mkdocs-glightbox mkdocs-git-revision-date-localized-plugin
 
-      - name: Prepare docs directory
+      - name: Build
         run: |
-          mkdir -p docs
-          rsync -a \
-            --exclude='.github' \
-            --exclude='.makemd' \
-            --exclude='.obsidian' \
-            --exclude='.scripts' \
-            --exclude='site' \
-            --exclude='mkdocs.yml' \
-            --exclude='README.md' \
-            . docs/
-
-      - name: Build site
-        run: mkdocs build --strict
+          ./scripts/mkdocs/build.sh
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site/
+          path: build/www/site/
 
   deploy:
     environment:

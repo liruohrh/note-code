@@ -1,2 +1,8 @@
 private/
 .DS_Store
+.venv/
+.vscode/
+.zed/
+.idea/
+*.iml
+/build/
