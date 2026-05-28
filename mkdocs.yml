@@ -40,9 +40,10 @@ plugins:
   - search:
       lang: zh
   - glightbox # 图片灯箱效果
-  - git-revision-date-localized:
-      type: iso_datetime
-      enable_creation_date: false
+  # 这个有问题，全部显示同一个时间，也不知道是什么的时间
+  # - git-revision-date-localized:
+  #     type: iso_datetime
+  #     enable_creation_date: false
 
 markdown_extensions:
   - nl2br # 换行符转为 br
