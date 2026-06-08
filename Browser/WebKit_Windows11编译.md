@@ -131,7 +131,80 @@ del CMakeCache.txt
 perl Tools/Scripts/build-webkit --release
 ```
 
+# 最终构建脚本
+## wksetup.ps1
 
+```powershell
+# 1. 初始化 VS x64 开发环境
+Import-Module "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\Microsoft.VisualStudio.DevShell.dll"
+Enter-VsDevShell a2e1d727 -SkipAutomaticLocation -DevCmdArguments "-arch=x64 -host_arch=x64"
+
+$env:PATH = "C:\xampp\apache\bin;$env:PATH"
+$env:PATH = "C:\xampp\perl\bin;$env:PATH"
+$env:PATH = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer;$env:PATH"
+$env:PATH = "$scriptDir\WebKitLibraries\win\bin;$env:PATH"
+
+$env:WEBKIT_TESTFONTS = "$scriptDir\Tools\WebKitTestRunner\fonts"
+$env:DUMPRENDERTREE_TEMP = $env:TEMP
+$env:CC = "clang-cl"
+$env:CXX = "clang-cl"
+
+# 5. 验证工具
+Write-Host "`n=== Tool Check ===" -ForegroundColor Cyan
+Get-Command cmake | Select-Object -ExpandProperty Source
+cmake --version
+Get-Command ninja | Select-Object -ExpandProperty Source
+ninja --version
+Get-Command clang | Select-Object -ExpandProperty Source
+clang --version
+Get-Command perl | Select-Object -ExpandProperty Source
+perl --version
+
+```
+
+## wkbuild.ps1
+
+```powershell
+if (-not (Test-Path "Tools/Scripts/build-webkit")) {
+    Write-Host "Tools/Scripts/build-webkit not found, please run at WebKit Root"
+    exit
+}
+
+
+if (-not (Get-Command perl -ErrorAction SilentlyContinue) -or
+    -not (Get-Command cl -ErrorAction SilentlyContinue)) {
+    . "$PSScriptRoot\wksetup.ps1"
+}
+
+
+Write-Host "start build WebKit..."
+
+
+if (-not $args.Length -eq 0) {
+    Write-Host "clean build cache"
+    Remove-Item -Recurse -Force WebKitBuild
+    Remove-Item -Recurse -Force vcpkg_installed
+    Remove-Item -Recurse -Force CMakeFiles
+    Remove-Item CMakeCache.txt
+}
+else {
+    Write-Host "use build cache"
+    # Remove-Item "WebKitBuild\Release\.ninja_deps" -ErrorAction SilentlyContinue
+}
+
+$env:BUILD_WEBKIT_ARGS = "-DDCURL_DISABLE_DOH=OFF"
+#$env:BUILD_WEBKIT_ARGS = "-DENABLE_REMOTE_INSPECTOR=ON -DENABLE_WEBDRIVER=ON"
+New-Item -ItemType Directory -Path ".vscode" -Force | Out-Null
+New-Item -ItemType File -Path ".vscode\build.log" -Force | Out-Null
+
+
+# 仅生成构建文件
+perl Tools/Scripts/build-webkit --release --use-ccache --generate-project-only | Tee-Object .vscode/build.log
+# 更新编译命令的符号链接
+ninja -C WebKitBuild/Release RewriteCompileCommands UpdateCompileCommandsSymlink | Tee-Object .vscode/ninja.log -Append
+# 手动编译
+ninja -C WebKitBuild/Release -j 4 Playwright | Tee-Object .vscode/build.log -Append
+```
 
 # 其他坑
 

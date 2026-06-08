@@ -217,6 +217,24 @@ Source\WebCore\page\Navigator.idl
 			- quirks.needsNavigatorUserAgentDataQuirk：在Source\WebCore\page\Quirks.cpp添加域名handler 启用 NeedsNavigatorUserAgentData，或者直接设置Quirks#needsNavigatorUserAgentDataQuirk返回true
 
 
+## Fetch
+
+### 从fetch到被 MixedContentChecker block
+1. fetch() → DocumentThreadableLoader::loadRequest(async 分支)DocumentThreadableLoader.cpp:604 → CachedResourceLoader::requestRawResource → requestResource
+2. CachedResourceLoader::requestResource CachedResourceLoader.cpp:1115 调 canRequest(type=RawResource, ...)
+3. canRequest 最后一步 CachedResourceLoader.cpp:628 调 checkInsecureContent
+4. checkInsecureContent CachedResourceLoader.cpp:479(RawResource 命中那组 case)调 MixedContentChecker::shouldBlockRequest
+5. MixedContentChecker::shouldBlockRequest MixedContentChecker.cpp:132:
+  - isMixedContent(行 76)= isDocumentSecure(browserscan=https) && !SecurityOrigin::isSecure("http://127.0.0.1") → true
+  - 行 145 那个"potentially trustworthy 就放行"的豁免,只在 isUpgradable == Yes 时生效;而 fetch 的 RawResource 是 IsUpgradable::No(CachedResourceLoader.cpp:447),所以豁免不适用
+  - → return true(拦截)
+6. checkInsecureContent 返回 false → canRequest 返回 false
+7. requestResource 回到 CachedResourceLoader.cpp:1117,造出 ResourceError{..., "Not allowed to request resource", ResourceError::Type::AccessControl}
+8. DocumentThreadableLoader::loadRequest:609 → logErrorAndFail → logError(ThreadableLoader.cpp:166):因为 error.isAccessControl() 为真,拼出 " due to access control checks."
+
+## includes
+- 像Source\WebCore\Modules\WebGPU\NavigatorGPU.idl ，没有单独的cpp实现文件，其是一个mixin，在Source\WebCore\page\Navigator.idl中`Navigator includes NavigatorGPU;`，因此实现文件也在Navigator.cpp
+
 # XXXRef指针机制
 
  1. 为什么不直接用 WebPageProxy*？
