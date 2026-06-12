@@ -198,6 +198,8 @@ New-Item -ItemType Directory -Path ".vscode" -Force | Out-Null
 New-Item -ItemType File -Path ".vscode\build.log" -Force | Out-Null
 
 
+
+# 如果要直接编译，设置并发 --makeargs="-j6"
 # 仅生成构建文件
 perl Tools/Scripts/build-webkit --release --use-ccache --generate-project-only | Tee-Object .vscode/build.log
 # 更新编译命令的符号链接
