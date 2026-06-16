@@ -40,7 +40,7 @@ void redirectToLog(FILE* logFile) {
 }
 ```
 # 环境
-- 参考 [WebKit_Windows11编译](../WebKit_Windows11编译)
+- 参考 [WebKit_Windows11编译](WebKit_Windows11编译.md)
 - 并修改环境
 	- cmake 3.29.9（3.29即可），解决cmake生成后手动ninja无法编译的问题（参考 [增量编译](#增量编译)）
 
