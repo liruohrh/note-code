@@ -1,3 +1,8 @@
+# GTK
+
+- 编译完后对可执行文件 执行 `strip xxx` ，库`strip --strip-unneeded xxx`
+
+
 # 源码分析
 
 - pageConfiguration：这个是在Tools/Playwright里创建，然后通过IPC共享的
