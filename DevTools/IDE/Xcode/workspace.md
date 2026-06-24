@@ -1,0 +1,2 @@
+-  都在项目根目录下，一般和项目同名，比如WebKit.xcworkspace
+- 构建、运行：WebKit.xcworkspace/xcshareddata/xcschemes/

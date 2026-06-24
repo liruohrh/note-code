@@ -21,6 +21,30 @@
 	- 详细看sparse checkout
 - `--depth n` 表示只下载最近的n次提交
 
+
+## clone大项目
+
+```bash
+git clone --depth=1 --filter=blob:none --single-branch https://github.com/WebKit/WebKit.git
+
+# 拉取当前分支所有commit，tag会被顺便拉取
+git fetch --unshallow
+# 设置到 HEAD
+git pull
+
+git fetch origin
+
+# 拉取所有tag，如果 commit 缺失会补充
+git fetch --tags
+
+# 拉取所有分支、tag
+git remote set-branches origin '*'
+git fetch origin
+# 或者
+git fetch origin --all
+```
+
+
 # git status
 - 显示
 	- 未跟踪（untracked）：Untracked files
