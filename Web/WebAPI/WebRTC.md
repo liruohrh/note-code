@@ -1,0 +1,8 @@
+- 无麦克风或摄像头权限时
+	- "candidate:3529708442 1 udp 2113937151 44fd4c1b-fdac-498e-9fc0-4698ec2d7805.local 49967 typ host generation 0 ufrag R84R network-cost 999"
+	- onicecandidateerror 701"STUN host lookup received error."
+	- 给系统注册了 uuid.local = local ip（可以进行ping），且只能有一个local ip
+- 如果有
+	- 则"candidate:352825146 1 udp 2122260223 192.168.123.88 55683 typ host generation 0 ufrag vVcq network-id 1"
+	- local ip不仅不是uuid.local，还把所有local ip都弄出来了
+		- 每个candidate都不会是重复的
