@@ -1,6 +1,7 @@
 name: Deploy Quartz site to GitHub Pages
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - site
@@ -24,13 +25,6 @@ jobs:
         with:
           ref: site
           fetch-depth: 0
-
-      - name: Export master branch into content
-        run: |
-          git fetch origin master
-          rm -rf content
-          mkdir -p content
-          git archive --format=tar origin/master | tar -xf - -C content
 
       - uses: actions/setup-node@v6
         with:
@@ -58,8 +52,17 @@ jobs:
       - name: Install Quartz plugins
         run: npx quartz plugin install
 
+      # 不知道为什么 git arhive 虽然也可以拉取 master 到 content，但是 quartz 就是找不到，明明 ls 查看文件是存在的
+      # git archive --format=tar origin/master | tar -xf - -C content
+      - name: Export master branch into content
+        run: |
+          rm -rf content
+          git fetch origin master
+          git worktree add content origin/master
+
       - name: Build Quartz
-        run: npx quartz build
+        run: |
+          npx quartz build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
