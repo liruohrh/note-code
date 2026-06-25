@@ -471,6 +471,13 @@ export async function handleBuild(argv) {
 
       const serve = async () => {
         const release = await buildMutex.acquire()
+        // serveHandler do not support dir with `.` to mapping a index.html
+        if(path.extname(req.url) !== "" && fs.existsSync(path.join(argv.output, req.url, "index.html"))) {
+          if(!req.url.endsWith("/")) {
+            req.url += "/"
+          }
+          req.url = req.url + "index/"
+        }
         await serveHandler(req, res, {
           public: argv.output,
           directoryListing: false,
