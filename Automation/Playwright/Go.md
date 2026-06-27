@@ -27,4 +27,9 @@
 	- Connect：连接用node启动的浏览器（也就是连接用一个js服务器启动的浏览器）
 	- ConnectOverCDP：直接使用CDP连接已经启动的浏览器
 - 每个BrowserContext都是一个独立的浏览器，newContext并不是无痕，而是一个特殊的独立浏览器，用独立的cookies等数据
+- close
+	- node,browser
+	- 关闭pw，browser也会被关闭
+	- 关闭本进程，node、browser也会被关闭
+	- 关闭持久化进程，建议先关闭browserContext，表现得像termiate
 
