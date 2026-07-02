@@ -12,11 +12,11 @@
     - Apple 官方 release snapshot（绑定 OS + Safari 版本的源码快照）
   - releases/Apple/Safari-Technology-Preview-144
     - 新特色实验渠道
-  - webkitgtk-2.36.4
-    - GTK port版本、Linux 桌面浏览器（Epiphany 等）、嵌入式 GTK 应用
+  - webkitgtk-2.36.4，linux GUI webkit分支
+    - GTK port版本、Linux 桌面浏览器（Epiphany 等）、 GTK 应用
     - [webkitgtk](https://docs.webkit.org/Ports/WebKitGTK%20and%20WPE%20WebKit/TipsForMaintainers.html#advisories)
-  - wpewebkit-2.44.4
-    - WPE（嵌入式）版本、Smart TV、车载系统、IoT 浏览器
+  - wpewebkit-2.44.4，linux embedded && headless webkit分支
+    - WPE（Web Platform for Embedded）版本、Smart TV、车载系统、IoT 浏览器
     - 📌 和 GTK 的关系：
       - 共用 WebKit core
       - 不同 UI backend（Wayland / 嵌入式设备）

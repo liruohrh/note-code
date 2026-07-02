@@ -24,3 +24,21 @@
 # userAgent
 
 - 如在packages\playwright-core\src\server\webkit\wkBrowser.ts里有DEFAULT_USER_AGENT
+
+
+# access
+
+## iframe
+- iframes里存储所有iframe
+- 操作不能用 `page.locator().xxx`，必须用`Iframe#xxx`,  `frameLocator().locator("xxx").xxx` 
+	- 比如waitFor、innerHTML
+- iframe不支持自动穿透
+- 如果iframe的src是js
+	- 被渲染且页面的html也有这个元素
+	- 只能用evaluate来操作iframe.contentDocument
+		- 无法用locator、frameLocator操作里面的元素
+		- 就连iframes里都不会有这个iframe
+
+## shadow
+- open shadow支持自动穿透
+- close shadow依然是null无法访问
