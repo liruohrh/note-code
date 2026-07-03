@@ -22,7 +22,7 @@
 - `--depth n` 表示只下载最近的n次提交
 
 
-## clone大项目
+# 大项目
 
 ```bash
 git clone --depth=1 --filter=blob:none --single-branch https://github.com/WebKit/WebKit.git
@@ -42,6 +42,11 @@ git remote set-branches origin '*'
 git fetch origin
 # 或者
 git fetch origin --all
+
+
+git config --global http.postBuffer 2147483648  # 2GB
+git config --global http.maxRequestBuffer 100M
+git config --global core.compression 0
 ```
 
 

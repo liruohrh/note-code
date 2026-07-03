@@ -1,4 +1,11 @@
-- 用git的diff功能实现patch
+# patch下要更新上游base commit
+
+- 直接在patch分支git merge commit， 和正常merge分支一样，会把旧base commit到新base commit合并到当前分支
+	- 缺点是会保留第一个base commit以及之后的commit，但是没办法，为了避免重复解决冲突
+	- 注意不要fetch第一个base commit之前的commit，否则会自动merge，删除需要重写所有commit hash
+	- 如果想要只保留base commit，即便更新base commit，那么只能用保留patchs文件的方式，但是这样有重复解决冲突的问题
+
+
 
 # patch & apply
 
@@ -28,7 +35,7 @@ git am -3 xxx.patch
 git am --signoff < xxx.patch
 
 # apply+commit
-git 
+git apply xxx.patch
 
 
 
@@ -37,15 +44,14 @@ git reset --hard HEAD
 ```
 
 
-## clone
+# clone
 
 ```bash
 # 初始化
 git init
 git remote add upstream <url>
 git fetch --depth 1 upstream <完整commit>
-git checkout FETCH_HEAD
-git checkout -b master
+git checkout -b master FETCH_HEAD
 
 # 将这个commit之前的commit拉下来
 git fetch --depth 9999999 upstream <完整commit>

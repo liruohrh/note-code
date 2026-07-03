@@ -51,6 +51,7 @@ webkit-container-sdk：May 30, 2026 be706e12c64766031de783b11219026c2c2b93c6
 ---
 修改
 - 将librice 改为v0.2.1
+- 禁用这个rice也行
 
 手动更新环境的方法
 ```bash
