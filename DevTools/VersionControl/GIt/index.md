@@ -140,9 +140,18 @@ git config --global core.compression 0
 		- 绿色表示增加的，红色表示删除的
 		- @@@@里表示 减了多少行，加了多少行，目前这个改变的有多少行
 	- 如果指定文件，就把工作区的所有文件都拿出来比较
-- option
-	- --staged，或者，--cached
-		- 比对已暂存文件与最后一次提交的文件差异
-	- git diff HEAD
-		- 和HEAD版本对比
+- 工作区与暂存区对比：`git diff`
+- 工作区与版本库对比：`git diff HEAD`
+- 暂存区与版本库对比：`git diff --cached HEAD`
 
+
+# 其他
+- commit范围： `A..B == (A,B]   A^..B=[A,B]  `   
+
+# 远程操作
+
+- git fetch repo xxx
+	- 拉取 分支、xxx及之前的commit
+	- --depth 包括自己最多n个commit
+	- fetch完后有FETCH_HEAD，可以checkout `git switch -c xxx FETCH_HEAD
+	- `git fetch origin main:main`  更新本地main分支，如果只是main只会更新远程分支

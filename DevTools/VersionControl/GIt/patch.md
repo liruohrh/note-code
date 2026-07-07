@@ -1,3 +1,14 @@
+# 不要上游commit的patch
+- 初始化
+	- `git fetch --depth 1 repo bc1`
+	- `git checkout --orphan branchx`
+	- `git commit -m "apply ...bc1"`
+- 更新到bcn
+	- 在其他目录保存完整的commit仓库：`git diff bc[n-1]..bcn > bcn.diff`
+	- 在当前仓库 
+		- `git apply bcn.diff`
+		- `git commit -m "apply bc[n-1]..bcn"`
+
 # patch下要更新上游base commit
 
 - 直接在patch分支git merge commit， 和正常merge分支一样，会把旧base commit到新base commit合并到当前分支
@@ -21,7 +32,8 @@ git diff -- xxx
 # 先检查是否能应用
 git apply --check xxx.patch 
 # 应用补丁 
-git apply xxx.patch         
+git apply xxx.patch    
+# 可能有冲突，有则-3     
 
 
 
@@ -29,13 +41,18 @@ git apply xxx.patch
 # 输出完整的commit以及diff
 git format-patch -1 HEAD  #最近一个提交
 # 应用mailbox patch
-# -3=--3way, 在当前代码与patch冲突时采取尝试合并
+# -3=--3way, 在当前代码与patch冲突时采取尝试合并, apply也有，如果不设置冲突直接失败
 git am -3 xxx.patch
 # 表明验证者，在commit message末尾追加"Signed-off-by: Your Name <your@email.com>"
 git am --signoff < xxx.patch
 
+# windows不支持 *.patch
+# 一般这样比较合适
+git am --signoff -3 patches/xxx.patch
+
+
 # apply+commit
-git apply xxx.patch
+git apply -3 xxx.patch
 
 
 

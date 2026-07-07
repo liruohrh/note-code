@@ -1,4 +1,9 @@
 任何merge都会发生冲突，冲突都是一样的问题。
+
+- git fetch origin main:main  同时执行checkout -b，但是如果已存在会报错
+- git fetch origin main  会在本分支同时merge，main分支也会更新
+- 
+
 # git merge
 - merge mode
 	- 
