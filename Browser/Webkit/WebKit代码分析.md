@@ -172,6 +172,9 @@ ProcessPoolConfiguration   ← 进程池级别（WebProcess 管理策略）
 			- 因为在Source\JavaScriptCore\CMakeLists.txt里执行了generate-inspector-protocol-bindings.py
 
 
+# BrowserContext
+- 配置应该保存到`WebsiteDataStore`（一个BrowserContext的数据）
+
 # WebProcess
 
 

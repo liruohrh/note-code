@@ -13,8 +13,6 @@
 | 代理绕过      | `--curl-noproxy=<list>`             | `--proxy-bypass-list=<list>` | `--ignore-host=<host>`   | 代理绕过列表格式不同               |
 | **环境变量**  |                                     |                              |                          |                          |
 | Cookie 存储 | `CURL_COOKIE_JAR_PATH`              | -                            | -                        | Windows 持久模式下的 Cookie 路径 |
-|           |                                     |                              |                          |                          |
-|           |                                     |                              |                          |                          |
 
 ### 特殊处理机制
 
