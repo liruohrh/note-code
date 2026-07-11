@@ -98,10 +98,18 @@ git config --global core.compression 0
 - 或者`git filter-repo --path target/ --invert-paths`
 	- 需要安装filter-repo
 
-# git restore
+# git restore/reset
 
 - `-S, --staged`：暂存区恢复HEAD
 - `-W, --worktree`：工作区恢复HEAD（默认）
+
+# git clean
+- 删除未跟踪文件
+- 注意：`git restore -S -W .`和 `git reset --hard HEAD`都无法操作未跟踪文件
+- `-f`  默认必须要强制删除，除非设置`clean.requireForce=false`
+- `-d` 默认不遍历目录
+- `-x` 不遵循gitignore，即即便是gitignore里的文件也删除
+
 
 # git mv
 - 移动文件，或者，重命名文件
@@ -154,4 +162,4 @@ git config --global core.compression 0
 	- 拉取 分支、xxx及之前的commit
 	- --depth 包括自己最多n个commit
 	- fetch完后有FETCH_HEAD，可以checkout `git switch -c xxx FETCH_HEAD
-	- `git fetch origin main:main`  更新本地main分支，如果只是main只会更新远程分支
+	- `git fetch origin main:main`  更新本地main分支，如果只是main只会更新远程分支，注意，分支只能被checkout一次
