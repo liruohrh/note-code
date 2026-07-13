@@ -1,7 +1,5 @@
 
-
-# DNS
-
+# Linux
 
 四种设置方式
 - NetworkManager nmcli
@@ -56,7 +54,11 @@ sudo nmcli connection modify netplan-enp3s0 ipv4.dns "192.168.123.1 223.5.5.5 11
 
 ### 指定DNS测试 dig @8.8.8.8 google.com
 
-
+### curl
+- `curl -v --resolve dns.google:443:8.8.8.8 https://dns.google/resolve?name=www.baidu.com`
+	- --resolve添加dns缓存
+`curl -v --doh-url https://1.1.1.1/dns-query https://www.google.com`
+`curl -v --doh-url https://1.1.1.1/dns-query https://www.google.com`
 ## 一个小测试
 
 - https://browserleaks.com/dns
@@ -72,3 +74,7 @@ sudo nmcli connection modify netplan-enp3s0 ipv4.dns "192.168.123.1 223.5.5.5 11
 	- 无DNS拦截+规则：全是AWS ISP
 	- 无DNS拦截+全局：全是AWS ISP
 	- 最重要的是我配置的dns是Google的，却老是出现AWS
+# 浏览器的DNS
+- chrome： 设置、安全、安全DNS
+- firefox: 设置、安全、安全DNS
+- safari： 无
