@@ -3,4 +3,5 @@
 	- https_proxy
 	- all_proxy
 	- 一般只需要设置`http://host:port`即可，windows无all_proxy
+	- 推荐都设置，有些不走socks5但走http（比如rustup)
 	
