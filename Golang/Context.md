@@ -2,7 +2,9 @@
 	- 取消
 		- 取消Child，仅仅该Child Done，不影响其他Child和Parent
 		- 取消Parent，Children也都被取消
+		- 可重复cancel（第一次取消后就不会执行）
 	- 错误
 		- 取消都是：`context.Canceled`
 		- Deadline或者超时都是：`context.DeadlineExceeded`
+		- 子context会继承父context的错误、cause
 	- WithCause：允许在cancel时传递一个cause error，`ctx.Err()`仍然是`context.Canceled`，但是`context.Cause(ctx)`返回的是cancel传递的error（该函数在不是CancelCauseFunc或者cause是nil时返回`ctx.Err()`）
