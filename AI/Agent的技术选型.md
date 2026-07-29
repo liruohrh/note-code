@@ -1,7 +1,11 @@
 # 纯HTML
 - 可按需引入以下库的cdn
 	- tailwind：简单来说就是不需要预先定义，模型只管追加，和agent喜欢jsonl差不多的道理
-	- alpinejs：声明式，jQuery是命令式
-		- https://github.com/brettatoms/agent-skills/blob/master/alpinejs/SKILL.md
+	- js库
+		- AlpineJS：声明式，jQuery是命令式
+			- https://github.com/brettatoms/agent-skills/blob/master/alpinejs/SKILL.md
+		- Petite-Vue：vue用户，相比AlpineJS自带功能更多一些，AlpineJS也就是插件什么的有点优势，但是都用cdn了，哪里需要那么多依赖
+		- Preact + htm：vdom+react用户
+		- SolidJS + htm：react+函数式用户，但是SolidJS和Svelte一样是编译优化的库，不适合不编译场景
 	- chartjs：图标
 	- dayjs：时间
