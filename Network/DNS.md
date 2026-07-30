@@ -52,6 +52,29 @@ sudo nmcli connection modify netplan-enp3s0 ipv4.dns "192.168.123.1 223.5.5.5 11
 - `journalctl -fu systemd-resolved`
 	- `Using DNS server xxx for transaction ...`
 
+- `Cache miss for deepseeek.com` 表示没有deepseek.com的缓存
+	- `Added positive unauthenticated non-confidential cache entry for deepseeek.com` 表示添加deepseek.com的缓存
+- 如果有 `Positive cache hit for deepseek.com` 则表示命中缓存
+```
+Received dns UDP packet of size 54, ifindex=0, ttl=64, fragsize=0, sender=127.0.0.1, destination=127.0.0.53
+Got DNS stub UDP query packet for id 3349
+Looking up RR for deepseeek.com IN A.
+Cache miss for deepseeek.com IN A
+Firing regular transaction 65186 for <deepseeek.com IN A> scope dns on enp3s0/* (validate=yes).
+Using feature level UDP for transaction 65186.
+Using DNS server 192.168.123.1 for transaction 65186.
+Emitting UDP, link MTU is 1500, socket MTU is 0, minimal MTU is 40
+Sending query packet with id 65186 of size 31.
+Processing query...
+Received dns UDP packet of size 47, ifindex=2, ttl=0, fragsize=0, sender=192.168.123.1, destination=192.168.123.18
+Processing incoming packet of size 47 on transaction 65186 (rcode=SUCCESS).
+Added positive unauthenticated non-confidential cache entry for deepseeek.com IN A 1281s on enp3s0/INET/192.168.123.1
+Regular transaction 65186 for <deepseeek.com IN A> on scope dns on enp3s0/* now complete with <success> from network (unsigned; non-confidential).
+Sending response packet with id 3349 on interface 1/AF_INET of size 58.
+Freeing transaction 65186.
+```
+
+
 ### 指定DNS测试 dig @8.8.8.8 google.com
 
 ### curl
