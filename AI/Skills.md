@@ -3,7 +3,8 @@
 	- -g 全局，默认项目
 	- -a zed .agents
 	- -y 同意
-	- -s theme-factory 安装github.com/anthropics/skills/skills/theme-factory
+	- -s theme-factory 指定安装skill
+		- 只要是含SKILL.md的目录都被认为是skill
 	- --copy 复制，默认链接
 
 - 主题

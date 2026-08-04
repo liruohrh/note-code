@@ -1,4 +1,32 @@
 # AI
+
+- https://huggingface.co/openbmb/MiniCPM-o-4_5
+	- 视觉理解
+	- 根据B站林亦做的mc实时评论，看起来很不错
+## 美术
+[ui-ux-pro-max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/.claude/skills/ui-ux-pro-max/SKILL.md)、Taste 这种配色/字体/风格库
+
+
+
+
+参考： https://pasqualepillitteri.it/zh/news/889/claude-code-18-zuijia-skill-ui-ux-sheji-zhinan
+
+| Skill                         | Stars  | Focus        | 适用对象            |
+| ----------------------------- | ------ | ------------ | --------------- |
+| **Anthropic Frontend Design** | 136.6k | 独特美学         | 所有人(推荐基础)       |
+| **UI/UX Pro Max**             | 101.9k | 自动设计系统       | 多平台项目           |
+| **Taste Skill**               | 59.4k  | 参数化控制        | 追求精细控制者         |
+| **Interface Design**          | 5.2k   | 长期一致性        | 长周期项目           |
+| **Frontend Design Pro Demo**  | 240    | 11 种现成风格     | 探索不同风格          |
+| **Designer Skills**           | 1.7k   | 完整流程         | 专业 UX 设计师       |
+| **Bencium UX**                | 326    | UX 基础        | 追求方法论严谨者        |
+| **Vercel Agent Skills**       | 28.8k  | 技术品质         | 视觉 Skill 的补充    |
+| **Refactoring UI**            | 30     | 视觉审计         | 现有 UI 的快速修复     |
+| **UX Heuristics**             | 1.6k   | 尼尔森启发式       | 上线前可用性审计        |
+| **iOS HIG Design**            | 483    | Apple HIG 原生 | iOS/SwiftUI 开发者 |
+| **Hooked UX**                 | 1.6k   | 留存与参与度       | 低留存产品           |
+| **Design Sprint**             | 1.6k   | 5 天冲刺        | 新点子验证           |
+
 ## draw
 - tldraw：开源免费的React绘图库
 	- 提供的一些结合AI的免费服务
