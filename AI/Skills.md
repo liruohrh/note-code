@@ -7,8 +7,10 @@
 		- 只要是含SKILL.md的目录都被认为是skill
 	- --copy 复制，默认链接
 
+# UI设计
 - 主题
 	- https://github.com/anthropics/skills/skills/theme-factory
+- https://github.com/emilkowalski/skills
 # 指导性
 - https://github.com/mattpocock/skills
 - https://github.com/forrestchang/andrej-karpathy-skills
