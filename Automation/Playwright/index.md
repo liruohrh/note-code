@@ -42,3 +42,9 @@
 ## shadow
 - open shadow支持自动穿透
 - close shadow依然是null无法访问
+
+
+# 浏览器原生命令与iframe、shadow
+- 怎么获取到closed shadow、iframe
+	- chromium的`DOM.getDocument({pierce:true})` 
+	- webkit的DOM.Node
