@@ -1,6 +1,19 @@
 
 
 ```yaml
+tun:
+  auto-detect-interface: true
+  auto-redirect: false
+  auto-route: true
+  device: Mihomo
+  dns-hijack:
+  - any:53
+  mtu: 1500
+  # 如果没有设置，极有可能无法被局域网其他主机连接
+  route-exclude-address:
+  - 192.168.0.0/16
+  stack: gvisor
+  strict-route: false
 # 解决DNS泄露问题，代理目标的DNS查询应该走代理，否则走了本地ISP
 dns:
   enable: true

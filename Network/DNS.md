@@ -1,4 +1,33 @@
 
+
+# DNS服务器
+
+| 提供商               | IPv4                           |
+| ----------------- | ------------------------------ |
+| Google Public DNS | 8.8.8.8 / 8.8.4.4              |
+| Cloudflare        | 1.1.1.1 / 1.0.0.1              |
+| Quad9             | 9.9.9.9 / 149.112.112.112      |
+| 阿里云 Public DNS    | 223.5.5.5 / 223.6.6.6          |
+| 腾讯 DNSPod         | 119.29.29.29 / 182.254.116.116 |
+| 百度 DNS            | 180.76.76.76                   |
+114.114.114.114  用不了，不要用
+
+
+## DOH 支持dns-json
+- `curl -H "accpet: application/dns-json" https://doh.pub/dns-query?name=example.com&type=A`
+- 由于DNS都是就近优先，因此如果用国内的会被探测到（在国内发起请求请求到部署在国内的DOH服务器），而国外的必须能访问国外才能用（即便是cloudflare）
+```json
+[
+"https://doh.pub/dns-query",
+"https://dns.alidns.com/resolve",
+
+"https://dns.google/resolve",
+"https://dns.adguard-dns.com/resolve",
+"https://cloudflare-dns.com/dns-query",
+]
+```
+
+
 # Linux
 
 四种设置方式
@@ -11,17 +40,6 @@
 - /etc/resolv.conf
 	- nameserver 127.0.0.53  就是用stemd-resolved
 - 应用程序(getaddrinfo、curl、浏览器...)
-
-
-| 提供商               | IPv4                           |
-| ----------------- | ------------------------------ |
-| Google Public DNS | 8.8.8.8 / 8.8.4.4              |
-| Cloudflare        | 1.1.1.1 / 1.0.0.1              |
-| Quad9             | 9.9.9.9 / 149.112.112.112      |
-| 阿里云 Public DNS    | 223.5.5.5 / 223.6.6.6          |
-| 腾讯 DNSPod         | 119.29.29.29 / 182.254.116.116 |
-| 百度 DNS            | 180.76.76.76                   |
-114.114.114.114  用不了，不要用
 
 ## 查看&修改
 - 重启

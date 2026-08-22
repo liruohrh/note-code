@@ -35,7 +35,7 @@
 - iframe不支持自动穿透
 - 如果iframe的src是js
 	- 被渲染且页面的html也有这个元素
-	- 只能用evaluate来操作iframe.contentDocument
+	- 只能用evaluate来操作iframe.contentDocument （webkit不行，chromium已解决）
 		- 无法用locator、frameLocator操作里面的元素
 		- 就连iframes里都不会有这个iframe
 
