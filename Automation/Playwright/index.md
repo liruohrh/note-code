@@ -48,3 +48,7 @@
 - 怎么获取到closed shadow、iframe
 	- chromium的`DOM.getDocument({pierce:true})` 
 	- webkit的DOM.Node
+# dialog
+- accept是ok，dismiss是取消
+- 只能调用一次accept或者dismiss
+- 如果监听了，就必须处理，否则所有操作将超时或者被阻塞
