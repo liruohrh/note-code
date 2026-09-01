@@ -17,3 +17,18 @@
 		- 如：windows上，CA是 `mkcert {host}\{username}@{host}`，签发的证书是`{host}\{username}@{host}`
 - windows证书问题
 	- 直接改名为`xxx.crt`点击安装可能不会导入到 "受信任的根证书颁发机构"，比如会在"中间证书颁发机构"
+
+# 命令的方式安装根证书
+```bash
+
+# 拷贝到目标机器后安装
+# Linux (Ubuntu/Debian)
+sudo cp root.crt /usr/local/share/ca-certificates/caddy-local-ca.crt
+sudo update-ca-certificates
+
+# Windows
+certutil -addstore -f "ROOT" root.crt
+
+# macOS
+sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain root.crt
+```
