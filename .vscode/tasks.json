@@ -1,0 +1,11 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "backup",
+            "command": "git add . && .scripts/commit.sh",
+            "detail": "backup with template"
+        }
+    ]
+}
