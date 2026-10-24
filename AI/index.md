@@ -66,3 +66,11 @@
 # MCP
 - AI和 AI IDE的中间件
 - [使用Claude桌面端，其支持MCP](https://www.youtube.com/watch?v=kFwE4hHbkT0)
+
+
+
+# Agent经验
+
+- 讨论会降低注意力，会把讨论中的某个要求之类的遗忘，要么全程记录，要么在开始执行之前复盘讨论
+  - claude code
+
