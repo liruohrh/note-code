@@ -61,8 +61,6 @@
 - 方式：普通文本、结构化文本、代码
 - [开源的smolagents -- 一个很好的理解代码agnet例子](https://www.bilibili.com/video/BV1x266YNEm8)
 
-
-
 # MCP
 - AI和 AI IDE的中间件
 - [使用Claude桌面端，其支持MCP](https://www.youtube.com/watch?v=kFwE4hHbkT0)
@@ -88,4 +86,12 @@
 - 目前有mcp会话
   - @sessname: desc
 ```
+
+
+# Agent经验
+
+- 讨论会降低注意力，会把讨论中的某个要求之类的遗忘，要么全程记录，要么在开始执行之前复盘讨论
+  - claude code
+- 即便使用任务列表这些方式，模型依然会虚假标记任务为完成，或者某些要求未实现，且在最后的输出中没有说明这些。
+  - claude code
 

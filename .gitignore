@@ -1,7 +1,8 @@
 private/
 .DS_Store
 .venv/
-.vscode/
+.vscode/*
+!.vscode/tasks.json
 .zed/
 .idea/
 *.iml
