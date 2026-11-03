@@ -66,3 +66,26 @@
 # MCP
 - AI和 AI IDE的中间件
 - [使用Claude桌面端，其支持MCP](https://www.youtube.com/watch?v=kFwE4hHbkT0)
+
+## mcpc 提供mcp cli访问
+- `npx mcpc`
+- https://github.com/apify/mcpc
+- 启动：`mcpc connect --stdio [configFile[:mcpName] | url]` （包括cli的mcp）
+	- 默认自动发现（当前目录下的.mcp.json, 其他agent的mcp）
+	- 也可以指定配置文件，可指定某个name
+	- 也可以指定URL
+		- 需要 `mcpc login URL`  浏览器 OAuth，存 profile
+		- [connect 认证方式](https://github.com/apify/mcpc/blob/main/README.md#authentication-precedence)
+	- 这些 mcpc connect --help里都有说明
+
+### 怎么给一个项目用
+- `npx skills add apify/mcpc -a zed -y -s mcpc`
+
+- AGENTS.md （手动管理此项目的mcp会话）
+```markdown
+# mcp
+- 本项目存在mcp，必须使用 mcpc skill 来用 mcpc cli 连接
+- 目前有mcp会话
+  - @sessname: desc
+```
+
