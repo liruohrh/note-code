@@ -33,7 +33,40 @@ Xvnc（TigerVNC） = xvfb + x11vnc
 
 **定位**：WPE 的平台后端之一，让 WebKit 在没有原生显示服务器的环境中渲染。
 
+**几个名词**（一帧从画出来到显示，中间换手的环节）：
+
+- **libwpe**：只定义"后端接口"，帧最后去哪由具体 backend 决定。
+- **WPEBackend-fdo**（freedesktop.org）：最常用的 libwpe 后端，在浏览器进程里内嵌一个迷你
+  Wayland 服务端，把 Web 进程画好的帧**导出**给宿主程序显示 —— 要么 GPU 的 EGLImage，
+  要么内存里的 SHM。
+- **dmabuf / EGLImage**：内核的缓冲共享机制，一块（显存）缓冲用一个 fd 表示，进程间零拷贝传递；
+  EGLImage 是 EGL 层对它的句柄。GPU 渲染的帧走这条。
+- **SHM**：普通共享内存里的像素数组，CPU 渲染（llvmpipe）只能走这条。
+- **render node**（`/dev/dri/renderD128`）：GPU 的"只算不显示"入口。**拿不到 ≠ 没 GPU** ——
+  X 客户端靠 X 服务器的 DRI3 拿设备 fd（`Xvfb` 不支持，所以报 `failed to get driver name for
+  fd -1`），Wayland 客户端靠合成器通告的 dmabuf 设备（软件渲染的合成器不通告）。
+  链路不给，就算机器上插着显卡也只能退 llvmpipe。
+
+**先分清两套 API**（同一个 WPE，名字容易混）：
+
+| | legacy | WPEPlatform（新） |
+|---|---|---|
+| 怎么认 | bundle 里有 `libwpe-1.0.so.1` + `libWPEBackend-fdo-1.0.so.1` | `libWPEWebKit-2.0.so.1` 里有 `wpe_display_wayland_get_type` / `wpe_display_headless_new` |
+| 后端怎么选 | 编译期挑 `HeadlessViewBackend` / `WindowViewBackend` | 运行期 `WPE_DISPLAY` 环境变量选，外挂模块走 `WPE_PLATFORMS_PATH` |
+| 有哪些后端 | fdo（嵌套 Wayland）+ headless | `wpe-display-wayland` / `wpe-display-drm` / `wpe-display-headless`，**没有 x11** |
+| 软件渲染能不能出画面 | 不能，窗口后端只认 EGL/dmabuf，拿到 SHM 直接拒（`cannot yet handle wpe_fdo_shm_exported_buffer`） | 能，`WPEViewWayland` 认 `WPE_IS_BUFFER_SHM` |
+
+注意 `WPE_DISPLAY` 要写**注册全称** `wpe-display-wayland`，写成 `wayland` 会报
+`Display of type wayland was not found`，看起来像"没编进去"，其实只是名字错了。
+
+**playwright 自带的 webkit 用哪一套，是会变的**（1.52～1.62 只有 legacy，1.63 起 legacy 被删光
+只剩 WPEPlatform）。逐版本矩阵、检测与下载脚本都在 itbrowser 仓库：
+`docs/playwright-wpe.md` + `scripts/pw-wpe.py`。
+
 **画面输出**：渲染到离屏缓冲区，通过 **DMA-BUF / SHM** 导出给消费者，例如 GStreamer 管道或自定义 GPU 合成程序。
+`WPEViewHeadless` 的做法是每帧 buffer 照常交出去、只是不上屏（源码注释："notifies that each
+buffer has been rendered … without producing visible output"），所以**帧一直存在**，
+playwright 的 `page.screenshot()` 就是从这里取的（`AcceleratedBackingStore::takeSnapshot`）。
 
 **传输协议**：
 - WPE 本身**不规定统一传输协议**，只负责把原始帧交给上层。
@@ -41,9 +74,13 @@ Xvnc（TigerVNC） = xvfb + x11vnc
 - **Screencast** 路径输出逐帧 **JPEG** 图片，Playwright 的 `page.screencast` 已覆盖 WebKit，WebKit 侧上限约 **25 FPS**。
 - 也可由消费者自行编码为 **H.264/VP9 over WebSocket**，构建类似 voxl 的自定义流媒体管道。
 
-**特点**：输出原始帧，编码和传输由上层决定；适合嵌入式、云游戏、自定义流媒体管道。
+**抓屏抓不到它**：无头 WPE 不创建任何 X 窗口，`xwininfo -root -tree` 里只有窗口管理器自己，
+VNC / voxl 对着那块屏截出来是全黑。要让人能看、能接管，只有两条路 —— 走协议
+（screenshot / screencast，上面那条），或者给它一个 Wayland 合成器当宿主（WPE 没有 X 后端）。
+后者在 Xvfb 里套一层 `weston --backend=x11` 就能做到，但页面等于被软件画两遍，比有头 GTK 贵得多；
+具体做法、坑和开销对比见 createrlib 的 `docs/虚拟桌面.md`。
 
-**在虚拟显示篇章里可记作**：原生无头渲染，用离屏缓冲替代 Xvfb 这类显示服务器，但只负责浏览器自身画面。
+**特点**：输出原始帧，编码和传输由上层决定；适合嵌入式、云游戏、自定义流媒体管道。
 
 #### Chromium Headless
 
